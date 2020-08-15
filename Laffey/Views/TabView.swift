@@ -15,21 +15,14 @@ struct ContentView: View {
         TabView(selection: $selection){
             Group {
                 HStack{
-                    VStack {
-                        Text("Laffey")
-                            .font(.title)
-                        Text("Laffey 2")
-                            .font(.callout)
-                    }
-                    Text("Laffey 3 ")
+                    Dashboard()
                 }
-                
-                    .tabItem {
-                        VStack {
-                            Image("first")
-                            Text("First")
-                        }
+                .tabItem {
+                    VStack {
+                        Image(selection == 0 ? "TimetableSelected" : "Timetable")
+                        Text("主页")
                     }
+                }
                 .tag(0)
             }
             Text("Second View")
@@ -37,7 +30,7 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image("second")
-                        Text("Second")
+                        Text("设定")
                     }
                 }
                 .tag(1)

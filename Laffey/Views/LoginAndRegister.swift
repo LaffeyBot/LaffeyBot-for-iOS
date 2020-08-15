@@ -14,6 +14,7 @@ struct LoginAndRegister: View {
     @State var didSendOTPOnce = false
     @State var doShowError = false
     @State var errorMessage = ""
+    @EnvironmentObject var shared: Shared
     
     static let OTP_REQUEST_INTERVAL = 20
     @State private var timeRemaining = LoginAndRegister.OTP_REQUEST_INTERVAL
@@ -50,6 +51,7 @@ struct LoginAndRegister: View {
             TextField(isRegistration ? "用户名" : "用户名/邮箱/手机号",
                       text: $regForm.username)
                 .disableAutocorrection(true)
+                .autocapitalization(.none)
                 .padding(.horizontal, 30)
             Divider()
                 .padding([.leading, .bottom, .trailing], 30)
@@ -63,14 +65,11 @@ struct LoginAndRegister: View {
                 TextField("邮箱", text: $regForm.email)
                     .padding(.horizontal, 30)
                     .disableAutocorrection(true)
+                    .autocapitalization(.none)
                 Divider()
                     .padding([.leading, .trailing], 30)
                 
                 Button(action: {
-                    withAnimation {
-                        self.didSendOTP = true
-                        self.didSendOTPOnce = true
-                    }
                     self.sendOTP(to: self.regForm.email)
                 }) {
                     Text(didSendOTP ? (String(describing: timeRemaining) + "秒后可重新发送") : "发送验证码")
@@ -87,6 +86,7 @@ struct LoginAndRegister: View {
                     TextField("邮箱验证码", text: $regForm.otp)
                         .padding(.horizontal, 30)
                         .transition(.opacity)
+                        .keyboardType(.numberPad)
                     Divider()
                         .padding([.leading, .trailing], 30)
                         .transition(.opacity)
@@ -148,6 +148,7 @@ struct LoginAndRegister: View {
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password
                     pref.didLogin = true
+                    self.shared.didlogin = true
                 }
             case let .failure(error):
                 self.displayAlert(message: "错误：" + error.localizedDescription)
@@ -188,6 +189,7 @@ struct LoginAndRegister: View {
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password
                     pref.didLogin = true
+                    self.shared.didlogin = true
                 }
                 // do something with the response data or statusCode
             case let .failure(error):
@@ -197,19 +199,46 @@ struct LoginAndRegister: View {
     }
     
     func displayAlert(message: String) {
-        withAnimation {
-            self.errorMessage = message
-            self.doShowError = true
+        DispatchQueue.main.async {
+            withAnimation {
+                self.errorMessage = message
+                self.doShowError = true
+            }
         }
     }
     
     func sendOTP(to: String) {
+        if !to.contains("@") || !to.contains(".") {
+            self.displayAlert(message: "Email 格式不正确喵...")
+            return
+        }
         
+        provider.request(.requestOTP(email: to, for: "sign-up")) { result in
+            switch result {
+            case let .success(moyaResponse):
+                let statusCode = moyaResponse.statusCode
+                
+                guard statusCode != 406 else {
+                    self.displayAlert(message: "Email 格式不正确喵...")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.didSendOTP = true
+                        self.didSendOTPOnce = true
+                    }
+                }
+            case let .failure(error):
+                self.displayAlert(message: "错误：" + error.localizedDescription)
+                return
+            }
+        }
     }
 }
 
 struct LoginAndRegister_Previews: PreviewProvider {
     static var previews: some View {
-        LoginAndRegister()
+        LoginAndRegister().environmentObject(Shared())
     }
 }

@@ -14,11 +14,11 @@ let provider = MoyaProvider<LaffeyAPI>()
 enum LaffeyAPI {
     case register(regForm: RegistrationForm)
     case login(loginForm: RegistrationForm)
-    case requestOTP(email: String)
+    case requestOTP(email: String, for: String)
 }
 
 extension LaffeyAPI: TargetType {
-    var baseURL: URL { return URL(string: "https://s.dd.works:5555")! }
+    var baseURL: URL { return URL(string: "http://s.dd.works:5555")! }
     var path: String {
         switch self {
         case .register:
@@ -45,8 +45,8 @@ extension LaffeyAPI: TargetType {
                                                    "password": regForm.password,
                                                    "email": regForm.email,
                                                    "otp": regForm.otp], encoding: JSONEncoding.default)
-        case let .requestOTP(email):
-            return .requestParameters(parameters: ["for": "sign-up",
+        case let .requestOTP(email, for_):
+            return .requestParameters(parameters: ["for": for_,
                                                    "email": email], encoding: JSONEncoding.default)
         }
     }

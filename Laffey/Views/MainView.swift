@@ -16,7 +16,7 @@ struct MainView: View {
             if !self.shared.didlogin {
                 LoginAndRegister()
             } else {
-                Dashboard()
+                ContentView()
             }
         }
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,14 @@
 		E43AC76C24E6681E00F548F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76B24E6681E00F548F1 /* Assets.xcassets */; };
 		E43AC76F24E6681E00F548F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */; };
 		E43AC77224E6681E00F548F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43AC77024E6681E00F548F1 /* LaunchScreen.storyboard */; };
+		E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */; };
+		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
+		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
+		E4A75D3924E7A02E007095D7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E4A75D3824E7A02E007095D7 /* Moya */; };
+		E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3A24E7A053007095D7 /* LaffeyAPI.swift */; };
+		E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3C24E7A819007095D7 /* LoginResponse.swift */; };
+		E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3E24E7ACBE007095D7 /* Preferences.swift */; };
+		E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E43AC77124E6681E00F548F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E43AC77324E6681E00F548F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegister.swift; sourceTree = "<group>"; };
+		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
+		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E4A75D3A24E7A053007095D7 /* LaffeyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaffeyAPI.swift; sourceTree = "<group>"; };
+		E4A75D3C24E7A819007095D7 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E4A75D3E24E7ACBE007095D7 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		E4A75D4124E7AEBD007095D7 /* Laffey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Laffey.entitlements; sourceTree = "<group>"; };
+		E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A75D3924E7A02E007095D7 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +75,9 @@
 		E43AC76124E6681C00F548F1 /* Laffey */ = {
 			isa = PBXGroup;
 			children = (
+				E4A75D4124E7AEBD007095D7 /* Laffey.entitlements */,
+				E4A75D3224E76DBF007095D7 /* Models */,
+				E43AC79424E7678500F548F1 /* Views */,
 				E43AC76224E6681C00F548F1 /* AppDelegate.swift */,
 				E43AC76424E6681C00F548F1 /* SceneDelegate.swift */,
 				E43AC76924E6681C00F548F1 /* ContentView.swift */,
@@ -66,6 +86,7 @@
 				E43AC77324E6681E00F548F1 /* Info.plist */,
 				E43AC76624E6681C00F548F1 /* Laffey.xcdatamodeld */,
 				E43AC76D24E6681E00F548F1 /* Preview Content */,
+				E4A75D3524E77487007095D7 /* Extensions.swift */,
 			);
 			path = Laffey;
 			sourceTree = "<group>";
@@ -78,6 +99,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E43AC79424E7678500F548F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4A75D3224E76DBF007095D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */,
+				E4A75D3A24E7A053007095D7 /* LaffeyAPI.swift */,
+				E4A75D3C24E7A819007095D7 /* LoginResponse.swift */,
+				E4A75D3E24E7ACBE007095D7 /* Preferences.swift */,
+				E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,12 +129,16 @@
 				E43AC75B24E6681C00F548F1 /* Sources */,
 				E43AC75C24E6681C00F548F1 /* Frameworks */,
 				E43AC75D24E6681C00F548F1 /* Resources */,
+				E4A75D4024E7ADA8007095D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Laffey;
+			packageProductDependencies = (
+				E4A75D3824E7A02E007095D7 /* Moya */,
+			);
 			productName = Laffey;
 			productReference = E43AC75F24E6681C00F548F1 /* Laffey.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +167,9 @@
 				Base,
 			);
 			mainGroup = E43AC75624E6681C00F548F1;
+			packageReferences = (
+				E4A75D3724E7A02E007095D7 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = E43AC76024E6681C00F548F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,15 +192,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E4A75D4024E7ADA8007095D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E43AC75B24E6681C00F548F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */,
+				E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */,
+				E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */,
+				E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */,
+				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
+				E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */,
+				E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */,
 				E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */,
 				E43AC76A24E6681C00F548F1 /* ContentView.swift in Sources */,
 				E43AC76524E6681C00F548F1 /* SceneDelegate.swift in Sources */,
+				E4A75D3624E77487007095D7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +363,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
@@ -297,10 +374,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.dwei.Laffey;
+				PRODUCT_BUNDLE_IDENTIFIER = works.dd.Laffey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -308,7 +386,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
@@ -317,10 +397,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.dwei.Laffey;
+				PRODUCT_BUNDLE_IDENTIFIER = works.dd.Laffey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -346,6 +427,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4A75D3724E7A02E007095D7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4A75D3824E7A02E007095D7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4A75D3724E7A02E007095D7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E43AC76624E6681C00F548F1 /* Laffey.xcdatamodeld */ = {

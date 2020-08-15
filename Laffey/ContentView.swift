@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Laffey
 //
-//  Created by 戴元平 on 8/14/20.
+//  Created by DDavid on 8/14/20.
 //  Copyright © 2020 Wei Dai. All rights reserved.
 //
 
@@ -13,15 +13,25 @@ struct ContentView: View {
  
     var body: some View {
         TabView(selection: $selection){
-            Text("First View")
-                .font(.title)
-                .tabItem {
+            Group {
+                HStack{
                     VStack {
-                        Image("first")
-                        Text("First")
+                        Text("Laffey")
+                            .font(.title)
+                        Text("Laffey 2")
+                            .font(.callout)
                     }
+                    Text("Laffey 3 ")
                 }
+                
+                    .tabItem {
+                        VStack {
+                            Image("first")
+                            Text("First")
+                        }
+                    }
                 .tag(0)
+            }
             Text("Second View")
                 .font(.title)
                 .tabItem {

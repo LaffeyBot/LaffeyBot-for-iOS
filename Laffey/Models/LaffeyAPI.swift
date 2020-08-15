@@ -15,6 +15,7 @@ enum LaffeyAPI {
     case register(regForm: RegistrationForm)
     case login(loginForm: RegistrationForm)
     case requestOTP(email: String, for: String)
+    case getRecords(updatedSince: String?)
 }
 
 extension LaffeyAPI: TargetType {
@@ -27,12 +28,16 @@ extension LaffeyAPI: TargetType {
             return "/v1/auth/login"
         case .requestOTP:
             return "/v1/email/request_otp"
+        case .getRecords:
+            return "/v1/record/get_records"
         }
     }
     var method: Moya.Method {
         switch self {
         case .register, .login, .requestOTP:
             return .post
+        case .getRecords:
+            return .get
         }
     }
     var task: Task {
@@ -48,6 +53,12 @@ extension LaffeyAPI: TargetType {
         case let .requestOTP(email, for_):
             return .requestParameters(parameters: ["for": for_,
                                                    "email": email], encoding: JSONEncoding.default)
+        case let .getRecords(updatedSince):
+            if updatedSince == nil {
+                return .requestPlain
+            } else {
+                return .requestParameters(parameters: ["updated_since": updatedSince!.urlEscaped], encoding: URLEncoding.queryString)
+            }
         }
     }
     var sampleData: Data {

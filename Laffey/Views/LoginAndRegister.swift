@@ -159,8 +159,36 @@ struct LoginAndRegister: View {
         provider.request(.register(regForm: regForm)) { result in
             switch result {
             case let .success(moyaResponse):
-                let data = moyaResponse.data
                 let statusCode = moyaResponse.statusCode
+                
+                guard statusCode != 422 else {
+                    self.displayAlert(message: "用户名必须为三字以上，密码必须为八字以上喵...")
+                    return
+                }
+                
+                guard statusCode != 409 else {
+                    self.displayAlert(message: "用户名已存在喵...")
+                    return
+                }
+                
+                guard statusCode != 410 else {
+                    self.displayAlert(message: "邮箱已存在喵...")
+                    return
+                }
+                
+                guard statusCode != 403 else {
+                    self.displayAlert(message: "邮箱验证码错误了喵...")
+                    return
+                }
+                
+                
+                if let json = try? JSONDecoder().decode(RegisterResponse.self, from: moyaResponse.data) {
+                    var pref = Preferences()
+                    pref.authToken = json.jwt
+                    pref.username = self.regForm.username
+                    pref.password = self.regForm.password
+                    pref.didLogin = true
+                }
                 // do something with the response data or statusCode
             case let .failure(error):
                 self.displayAlert(message: "错误：" + error.localizedDescription)

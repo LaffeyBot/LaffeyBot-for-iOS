@@ -40,7 +40,7 @@ public struct Preferences {
     
     public var userID: Int {
         get {
-            return userDefaults.string(forKey: "userID" ) ?? -1
+            return userDefaults.integer(forKey: "userID")
         }
         set(value) {
             userDefaults.set(value, forKey: "userID" )

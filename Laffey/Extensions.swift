@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 public extension Color {
     static let salmon = Color(rgb: 0xFF7E79)
+    static let lightSalmon = Color(rgb: 0xFFE8E7)
     
     init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -53,4 +55,15 @@ extension View {
   func keyboardResponsive() -> ModifiedContent<Self, KeyboardResponsiveModifier> {
     return modifier(KeyboardResponsiveModifier())
   }
+}
+
+extension CodingUserInfoKey {
+    static let context = CodingUserInfoKey(rawValue: "context")!
+}
+
+extension JSONDecoder {
+    convenience init(context: NSManagedObjectContext) {
+        self.init()
+        self.userInfo[.context] = context
+    }
 }

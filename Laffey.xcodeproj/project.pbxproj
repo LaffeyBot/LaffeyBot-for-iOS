@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9D924E8F179008145F8 /* TeamRecord.swift */; };
+		E419D9DF24E8F66C008145F8 /* GetRecordsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9DE24E8F66C008145F8 /* GetRecordsResponse.swift */; };
+		E419D9E124E90939008145F8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9E024E90939008145F8 /* ProgressBar.swift */; };
 		E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC76224E6681C00F548F1 /* AppDelegate.swift */; };
 		E43AC76524E6681C00F548F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC76424E6681C00F548F1 /* SceneDelegate.swift */; };
 		E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E43AC76624E6681C00F548F1 /* Laffey.xcdatamodeld */; };
@@ -15,6 +18,7 @@
 		E43AC76F24E6681E00F548F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */; };
 		E43AC77224E6681E00F548F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43AC77024E6681E00F548F1 /* LaunchScreen.storyboard */; };
 		E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */; };
+		E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */; };
 		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
 		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
 		E4A75D3924E7A02E007095D7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E4A75D3824E7A02E007095D7 /* Moya */; };
@@ -25,9 +29,19 @@
 		E4A75D4724E7B784007095D7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4624E7B784007095D7 /* MainView.swift */; };
 		E4A75D4924E7B821007095D7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4824E7B821007095D7 /* Dashboard.swift */; };
 		E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB85CD24E7BA7400DF40BC /* Shared.swift */; };
+		E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2540924E90BC50049A11C /* BossHealth.swift */; };
+		E4F2192A24E91BD5000B45DF /* RecordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2192924E91BD5000B45DF /* RecordForm.swift */; };
+		E4F2192E24E91C5C000B45DF /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2192D24E91C5C000B45DF /* AddRecordView.swift */; };
+		E94D3A30F6BC9E339ED51425 /* Pods_Laffey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E702C8A75D67660C914233 /* Pods_Laffey.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.debug.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.debug.xcconfig"; sourceTree = "<group>"; };
+		67E702C8A75D67660C914233 /* Pods_Laffey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laffey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.release.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.release.xcconfig"; sourceTree = "<group>"; };
+		E419D9D924E8F179008145F8 /* TeamRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRecord.swift; sourceTree = "<group>"; };
+		E419D9DE24E8F66C008145F8 /* GetRecordsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecordsResponse.swift; sourceTree = "<group>"; };
+		E419D9E024E90939008145F8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E43AC75F24E6681C00F548F1 /* Laffey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laffey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43AC76224E6681C00F548F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E43AC76424E6681C00F548F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +52,7 @@
 		E43AC77124E6681E00F548F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E43AC77324E6681E00F548F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegister.swift; sourceTree = "<group>"; };
+		E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListRow.swift; sourceTree = "<group>"; };
 		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E4A75D3A24E7A053007095D7 /* LaffeyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaffeyAPI.swift; sourceTree = "<group>"; };
@@ -48,6 +63,9 @@
 		E4A75D4624E7B784007095D7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E4A75D4824E7B821007095D7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		E4BB85CD24E7BA7400DF40BC /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		E4D2540924E90BC50049A11C /* BossHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossHealth.swift; sourceTree = "<group>"; };
+		E4F2192924E91BD5000B45DF /* RecordForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordForm.swift; sourceTree = "<group>"; };
+		E4F2192D24E91C5C000B45DF /* AddRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,17 +74,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4A75D3924E7A02E007095D7 /* Moya in Frameworks */,
+				E94D3A30F6BC9E339ED51425 /* Pods_Laffey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9444172466BDCBAA3C474DA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67E702C8A75D67660C914233 /* Pods_Laffey.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FD4C3BA4F469576531C6991 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */,
+				969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E419D9D824E8F165008145F8 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				E419D9D924E8F179008145F8 /* TeamRecord.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		E419D9DD24E8F656008145F8 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */,
+				E4A75D3C24E7A819007095D7 /* LoginResponse.swift */,
+				E419D9DE24E8F66C008145F8 /* GetRecordsResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		E43AC75624E6681C00F548F1 = {
 			isa = PBXGroup;
 			children = (
 				E43AC76124E6681C00F548F1 /* Laffey */,
 				E43AC76024E6681C00F548F1 /* Products */,
+				9FD4C3BA4F469576531C6991 /* Pods */,
+				9444172466BDCBAA3C474DA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +167,9 @@
 				E4A75D4624E7B784007095D7 /* MainView.swift */,
 				E4A75D4824E7B821007095D7 /* Dashboard.swift */,
 				E43AC76924E6681C00F548F1 /* TabView.swift */,
+				E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */,
+				E419D9E024E90939008145F8 /* ProgressBar.swift */,
+				E4F2192D24E91C5C000B45DF /* AddRecordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,12 +177,14 @@
 		E4A75D3224E76DBF007095D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E419D9DD24E8F656008145F8 /* Responses */,
+				E419D9D824E8F165008145F8 /* Realm */,
 				E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */,
+				E4F2192924E91BD5000B45DF /* RecordForm.swift */,
 				E4A75D3A24E7A053007095D7 /* LaffeyAPI.swift */,
-				E4A75D3C24E7A819007095D7 /* LoginResponse.swift */,
 				E4A75D3E24E7ACBE007095D7 /* Preferences.swift */,
-				E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */,
 				E4BB85CD24E7BA7400DF40BC /* Shared.swift */,
+				E4D2540924E90BC50049A11C /* BossHealth.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,10 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E43AC77624E6681E00F548F1 /* Build configuration list for PBXNativeTarget "Laffey" */;
 			buildPhases = (
+				8AA4B1B51320F83718274AA3 /* [CP] Check Pods Manifest.lock */,
 				E43AC75B24E6681C00F548F1 /* Sources */,
 				E43AC75C24E6681C00F548F1 /* Frameworks */,
 				E43AC75D24E6681C00F548F1 /* Resources */,
 				E4A75D4024E7ADA8007095D7 /* ShellScript */,
+				ED2D9DBB80A9CA58DE10EC17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +265,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8AA4B1B51320F83718274AA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Laffey-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4A75D4024E7ADA8007095D7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +304,23 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
 		};
+		ED2D9DBB80A9CA58DE10EC17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -226,14 +328,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E419D9DF24E8F66C008145F8 /* GetRecordsResponse.swift in Sources */,
+				E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */,
 				E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */,
+				E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */,
 				E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */,
+				E419D9E124E90939008145F8 /* ProgressBar.swift in Sources */,
+				E4F2192A24E91BD5000B45DF /* RecordForm.swift in Sources */,
+				E4F2192E24E91C5C000B45DF /* AddRecordView.swift in Sources */,
 				E4A75D4924E7B821007095D7 /* Dashboard.swift in Sources */,
 				E4A75D4724E7B784007095D7 /* MainView.swift in Sources */,
 				E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */,
 				E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */,
 				E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */,
 				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
+				E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */,
 				E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */,
 				E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */,
 				E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */,
@@ -373,15 +482,17 @@
 		};
 		E43AC77724E6681E00F548F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Laffey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,15 +507,17 @@
 		};
 		E43AC77824E6681E00F548F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 63;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Laffey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -15,7 +15,7 @@ enum LaffeyAPI {
     case register(regForm: RegistrationForm)
     case login(loginForm: RegistrationForm)
     case requestOTP(email: String, for: String)
-    case getRecords(updatedSince: String?)
+    case getRecords(updatedSince: String = "", type: String = "personal")
 }
 
 extension LaffeyAPI: TargetType {
@@ -53,19 +53,25 @@ extension LaffeyAPI: TargetType {
         case let .requestOTP(email, for_):
             return .requestParameters(parameters: ["for": for_,
                                                    "email": email], encoding: JSONEncoding.default)
-        case let .getRecords(updatedSince):
-            if updatedSince == nil {
-                return .requestPlain
-            } else {
-                return .requestParameters(parameters: ["updated_since": updatedSince!.urlEscaped], encoding: URLEncoding.queryString)
-            }
+        case let .getRecords(updatedSince, type):
+                return .requestParameters(parameters: [
+                    "updated_since": updatedSince.urlEscaped,
+                    "type": type
+                ], encoding: URLEncoding.queryString)
         }
     }
     var sampleData: Data {
         return Data()
     }
     var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        var header = ["Content-type": "application/json"]
+        switch self {
+        case .getRecords:
+            header["auth"] = Preferences().authToken
+        default:
+            break
+        }
+        return header
     }
 }
 // MARK: - Helpers

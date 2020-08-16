@@ -16,6 +16,7 @@ enum LaffeyAPI {
     case login(loginForm: RegistrationForm)
     case requestOTP(email: String, for: String)
     case getRecords(updatedSince: String = "", type: String = "personal")
+    case addRecord(recordForm: RecordForm)
 }
 
 extension LaffeyAPI: TargetType {
@@ -30,11 +31,13 @@ extension LaffeyAPI: TargetType {
             return "/v1/email/request_otp"
         case .getRecords:
             return "/v1/record/get_records"
+        case .addRecord:
+            return "/v1/record/add_record"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .register, .login, .requestOTP:
+        case .register, .login, .requestOTP, .addRecord:
             return .post
         case .getRecords:
             return .get
@@ -58,6 +61,13 @@ extension LaffeyAPI: TargetType {
                     "updated_since": updatedSince.urlEscaped,
                     "type": type
                 ], encoding: URLEncoding.queryString)
+        case let .addRecord(recordForm):
+            return .requestParameters(parameters: [
+                "damage": Int(recordForm.damage) ?? 0,
+                "type": recordForm.type,
+                "boss_gen": Int(recordForm.boss_gen) ?? 0,
+                "boss_order": recordForm.boss_order + 1
+            ], encoding: JSONEncoding.default)
         }
     }
     var sampleData: Data {
@@ -66,7 +76,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords:
+        case .getRecords, .addRecord:
             header["auth"] = Preferences().authToken
         default:
             break

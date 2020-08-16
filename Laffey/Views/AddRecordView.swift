@@ -7,32 +7,35 @@
 //
 
 import SwiftUI
+import RealmSwift
+import SwiftyJSON
 
 struct AddRecordView: View {
-    @Binding var currentRecord: TeamRecordNative
     @State var recordForm: RecordForm = RecordForm()
     @State var isShowingMore: Bool = false
+    @Binding var isAddingRecord: Bool
+    @ObservedObject var currentRecord: TeamRecordNative
     
     var body: some View {
-        VStack {
-            Picker(selection: $recordForm.typeIndex, label: Text("出刀类型")) {
+        VStack(spacing: 30) {
+            Picker(selection: $recordForm.type_index.onChange(onTypeIndexChange), label: Text("出刀类型")) {
                 Text("普通").tag(0)
                 Text("尾刀").tag(1)
                 Text("补偿刀").tag(2)
-            }.pickerStyle(SegmentedPickerStyle())
-                .padding()
+                }.pickerStyle(SegmentedPickerStyle())
             
             HStack {
                 Text("伤害")
-                TextField("伤害", value: $recordForm.damage, formatter: NumberFormatter())
-                    .padding(.horizontal, 30)
-                    .transition(.opacity)
-                    .keyboardType(.numberPad)
-                Divider()
-                    .padding([.leading, .trailing], 30)
-                    .transition(.opacity)
+                VStack {
+                    TextField("伤害", text: $recordForm.damage)
+                        .padding(.horizontal, 30)
+                        .keyboardType(.numberPad)
+                    Divider()
+                        .padding([.leading, .trailing], 30)
+                }
+                
             }
-            
+            .padding()
             
             if !isShowingMore {
                 Button(action: {
@@ -44,7 +47,105 @@ struct AddRecordView: View {
                         .transition(.opacity)
                         .foregroundColor(Color.salmon)
                 }
+            } else {
+                HStack {
+                    Text("周目")
+                    VStack {
+                        TextField("周目", text: $recordForm.boss_gen)
+                            .padding(.horizontal, 30)
+                            .keyboardType(.numberPad)
+                        Divider()
+                            .padding([.leading, .trailing], 30)
+                    }
+                    
+                }
                 .padding()
+                
+                HStack {
+                    Text("第")
+                    Picker(selection: $recordForm.boss_order, label: Text("")) {
+                        Text("1").tag(0)
+                        Text("2").tag(1)
+                        Text("3").tag(2)
+                        Text("4").tag(3)
+                        Text("5").tag(4)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .padding()
+                    
+                    Text("王")
+                    
+                }
+                .padding(.horizontal, 30)
+            }
+            
+            HStack {
+                Button(action: {
+                    self.submitRecord()
+                }) {
+                    Text("提交")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                }
+                .font(.headline)
+                .background(Color.salmon)
+                .foregroundColor(.white)
+                .cornerRadius(40)
+                .padding([.horizontal], 20)
+                
+                Button(action: {
+                    withAnimation {
+                        self.isAddingRecord = false
+                    }
+                }) {
+                    Text("取消")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                }
+                .font(.headline)
+                .background(Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(40)
+                .padding([.horizontal], 20)
+            }
+        }
+    }
+    
+    func onTypeIndexChange(typeIndex: Int) {
+        if typeIndex == 1 {
+            self.recordForm.damage = String(currentRecord.boss_remaining_health)
+        }
+    }
+    
+    func displayErrorMessage(msg: String) {
+        
+    }
+    
+    func submitRecord() {
+        if Int(recordForm.boss_gen) == nil {
+            self.displayErrorMessage(msg: "boss代数不是整数喵...")
+        }
+        
+        provider.request(.addRecord(recordForm: recordForm)) { result in
+            switch result {
+            case let .success(response):
+                print(String(data: response.request?.httpBody ?? Data(), encoding: .utf8))
+                print(String(data: response.data, encoding: .utf8))
+                if let json = try? JSON(data: response.data) {
+                    let realm = try! Realm()
+                    if let dictRow = json["team_record"].dictionaryObject {
+                        let recordToAdd = TeamRecord(value: dictRow)
+                        try! realm.write {
+                            realm.add(recordToAdd, update: .modified)
+                        }
+                        
+                        DispatchQueue.main.async {
+//                            withAnimation {
+                                self.currentRecord.update(teamRecord: recordToAdd)
+                                self.isAddingRecord = false
+//                            }
+                        }
+                    }
+                }
+            case let .failure(error):
+                self.displayErrorMessage(msg: error.localizedDescription)
             }
         }
     }
@@ -52,6 +153,6 @@ struct AddRecordView: View {
 
 struct AddRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        AddRecordView(currentRecord: .constant(TeamRecordNative()))
+        AddRecordView(recordForm: RecordForm(), isShowingMore: true, isAddingRecord: .constant(false), currentRecord: TeamRecordNative())
     }
 }

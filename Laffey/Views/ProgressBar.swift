@@ -17,6 +17,7 @@ struct ProgressBar: View {
                 Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
                     .opacity(0.3)
                     .foregroundColor(Color.lightSalmon)
+                    .animation(.none)
                 
                 Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(Color.salmon)

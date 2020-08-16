@@ -9,11 +9,13 @@
 import Foundation
 
 class RecordForm {
-    var damage: Int = 0
-    var typeIndex: Int = 0
+    var damage: String = "0"
+    var type_index: Int = 0
+    var boss_gen: String = "1"
+    var boss_order: Int = 1
     var type: String {
         get {
-            switch typeIndex {
+            switch type_index {
             case 0:
                 return "normal"
             case 1:
@@ -24,5 +26,13 @@ class RecordForm {
                 return "normal"
             }
         }
+    }
+    
+    init(boss_gen: String, boss_order: Int) {
+        self.boss_gen = boss_gen
+        self.boss_order = boss_order
+    }
+    
+    init() {
     }
 }

@@ -22,19 +22,12 @@ struct LoginAndRegister: View {
     
     var body: some View {
         VStack {
-            if isRegistration {
-                Text("注册")
-                    .bold()
-                    .font(.title)
-                    .transition(.slide)
-                .padding()
-            } else {
-                Text("登录")
-                    .bold()
-                    .font(.title)
-                    .transition(.slide)
-                .padding()
-            }
+            Text(isRegistration ? "注册" : "登录")
+                .bold()
+                .font(.title)
+                .transition(.slide)
+            .padding()
+            .animation(.none)
             
             Button(action: {
                 withAnimation {

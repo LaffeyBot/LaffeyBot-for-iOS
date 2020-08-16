@@ -48,8 +48,8 @@ class TeamRecordNative: ObservableObject {
         self.current_boss_order = teamRecord.current_boss_order
         self.boss_remaining_health = teamRecord.boss_remaining_health
         self.last_modified = teamRecord.last_modified
-        if self.current_boss_gen != 0 {
-            self.boss_health_percentage = Float(self.boss_remaining_health) / Float(bossMaxHealth[Int(current_boss_gen) - 1])
+        if self.current_boss_order != 0 {
+            self.boss_health_percentage = Float(self.boss_remaining_health) / Float(bossMaxHealth[Int(current_boss_order) - 1])
         }
        
     }

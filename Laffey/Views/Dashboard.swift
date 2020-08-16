@@ -14,7 +14,8 @@ struct Dashboard: View {
     @Environment(\.managedObjectContext) var moc
     @State var recordList: Results<TeamRecord>?
     @ObservedObject var currentRecord: TeamRecordNative = TeamRecordNative()
-    @State var isAddingRecord = false
+    @State var isAddingRecord: Bool = false
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ScrollView {
@@ -23,22 +24,31 @@ struct Dashboard: View {
                 Text("当前攻略")
                     .font(.largeTitle)
                 
-                HStack {
-                    Text(String(currentRecord.current_boss_gen))
-                    Text("周目")
-                    Text(String(currentRecord.current_boss_order))
-                        .font(.largeTitle)
-                        .foregroundColor(Color.salmon)
-                    Text("王")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.salmon)
+                VStack {
+                    HStack {
+                        Text(String(currentRecord.current_boss_gen))
+                        Text("周目")
+                    }
+                    HStack {
+                        Text(String(currentRecord.current_boss_order))
+                            .font(.largeTitle)
+                            .foregroundColor(Color.salmon)
+                        Text("王")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.salmon)
+                    }
                 }
                 
                 Text("剩余血量：" + String(currentRecord.boss_remaining_health))
+                ProgressBar(value: $currentRecord.boss_health_percentage)
+                    .frame(minHeight: 30)
+                    .padding()
+                    .transition(.identity)
+                    .animation(.none)
                 
                 Button(action: {
                     withAnimation {
-                        self.isAddingRecord.toggle()
+                        self.isAddingRecord = true
                     }
                 }) {
                     Text("报刀")
@@ -49,17 +59,23 @@ struct Dashboard: View {
                 .foregroundColor(.white)
                 .cornerRadius(40)
                 .padding(30)
+                .animation(.none)
                 
                 if isAddingRecord {
-                    
+                    AddRecordView(recordForm:
+                        RecordForm(
+                            boss_gen: String(Int(currentRecord.current_boss_gen)),
+                            boss_order: Int(currentRecord.current_boss_order) - 1
+                    ), isAddingRecord: $isAddingRecord,
+                       currentRecord: currentRecord)
                 }
-                
-                ProgressBar(value: $currentRecord.boss_health_percentage)
-                .frame(minHeight: 30)
-                .padding()
             }
         }
+        .keyboardResponsive()
         .onAppear() {
+            self.fetchAllRecords()
+        }
+        .onReceive(timer) { _ in
             self.fetchAllRecords()
         }
     }
@@ -104,6 +120,6 @@ struct Dashboard: View {
 
 struct Dashboard_Previews: PreviewProvider {
     static var previews: some View {
-        Dashboard()
+        Dashboard(isAddingRecord: true)
     }
 }

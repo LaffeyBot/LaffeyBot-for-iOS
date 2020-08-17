@@ -20,6 +20,7 @@ struct FetchData {
         provider.request(.getRecords(updatedSince: "0", type: "team")) { (result) in
             switch result {
             case let .success(response):
+                print(String(data: response.data, encoding: .utf8))
                 guard let json = try? JSON(data: response.data) else {
                     print(String(data: response.data, encoding: .utf8) ?? "")
                     return

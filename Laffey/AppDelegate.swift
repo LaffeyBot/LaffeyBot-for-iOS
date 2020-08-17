@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+XGPush.defaultManager().startXG(withAppID:1600012020, appKey:"I8H2ON40VAM2", delegate:nil)
+
         // Override point for customization after application launch.
         return true
     }
@@ -79,4 +81,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 

@@ -140,6 +140,7 @@ struct LoginAndRegister: View {
                     pref.authToken = json.jwt
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password
+                    pref.userID = json.id
                     pref.didLogin = true
                     self.shared.didlogin = true
                 }
@@ -181,6 +182,7 @@ struct LoginAndRegister: View {
                     pref.authToken = json.jwt
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password
+                    pref.userID = json.id
                     pref.didLogin = true
                     self.shared.didlogin = true
                 }

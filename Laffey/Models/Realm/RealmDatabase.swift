@@ -18,6 +18,21 @@ struct RealmDatabase {
         }
     }
     
+    func getAllPersonalRecords() -> Results<PersonalRecord> {
+        return realm.objects(PersonalRecord.self).sorted(byKeyPath: "detail_date", ascending: false)
+    }
+    
+    func getCurrentTeamRecord(current: TeamRecordNative) -> TeamRecordNative {
+        let realm = try! Realm()
+        let recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "detail_date", ascending: false)
+        if recordList.count > 0 {
+            current.update(teamRecord: recordList[0])
+            return current
+        } else {
+            return TeamRecordNative()
+        }
+    }
+    
 //    func addRecord(recordDict: Dictionary, type: Object.Type) {
 //        
 //    }

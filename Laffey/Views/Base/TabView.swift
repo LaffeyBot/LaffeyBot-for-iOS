@@ -25,6 +25,19 @@ struct ContentView: View {
                 }
                 .tag(0)
             }
+            
+            Group {
+                HStack{
+                    RecordListView()
+                }
+                .tabItem {
+                    VStack {
+                        Image(selection == 0 ? "TimetableSelected" : "Timetable")
+                        Text("记录")
+                    }
+                }
+                .tag(1)
+            }
             Text("Second View")
                 .font(.title)
                 .tabItem {
@@ -33,7 +46,7 @@ struct ContentView: View {
                         Text("设定")
                     }
                 }
-                .tag(1)
+                .tag(2)
         }
     }
 }

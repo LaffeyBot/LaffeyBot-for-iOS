@@ -13,9 +13,12 @@ import SwiftyJSON
 struct Dashboard: View {
     @Environment(\.managedObjectContext) var moc
     @State var recordList: Results<TeamRecord>?
-    @ObservedObject var currentRecord: TeamRecordNative = TeamRecordNative()
+    @ObservedObject var currentRecord: TeamRecordNative = RealmDatabase().getCurrentTeamRecord(current: TeamRecordNative())
     @State var isAddingRecord: Bool = false
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
+    @State var hasError = false
+    @State var errorText = ""
     
     var body: some View {
         ScrollView {
@@ -46,6 +49,11 @@ struct Dashboard: View {
                     .transition(.identity)
                     .animation(.none)
                 
+                if hasError {
+                    Text("错误：" + self.errorText)
+                        .foregroundColor(.red)
+                }
+                
                 Button(action: {
                     withAnimation {
                         self.isAddingRecord = true
@@ -73,6 +81,7 @@ struct Dashboard: View {
         }
         .keyboardResponsive()
         .onAppear() {
+            print("DASHBOARD IS VISIBLE")
             self.fetchAllRecords()
         }
         .onReceive(timer) { _ in
@@ -86,10 +95,12 @@ struct Dashboard: View {
             case .success:
                 DispatchQueue.main.async {
                     self.refreshData()
+                    self.hasError = false
                 }
             case let .error(error):
                 self.displayError(message: error.localizedDescription)
             case .noUpdate:
+                self.hasError = false
                 break
             }
         }
@@ -99,12 +110,15 @@ struct Dashboard: View {
         let realm = try! Realm()
         self.recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "detail_date", ascending: false)
         if (self.recordList?.count ?? 0) > 0 {
-            self.currentRecord.update(teamRecord: recordList![0])
+            return currentRecord.update(teamRecord: recordList![0])
         }
     }
     
     func displayError(message: String) {
-        
+        withAnimation {
+            self.errorText = message
+            self.hasError = true
+        }
     }
 }
 

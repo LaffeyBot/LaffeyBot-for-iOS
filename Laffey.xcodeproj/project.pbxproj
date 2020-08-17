@@ -20,7 +20,7 @@
 		E43AC76C24E6681E00F548F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76B24E6681E00F548F1 /* Assets.xcassets */; };
 		E43AC76F24E6681E00F548F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */; };
 		E43AC77224E6681E00F548F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43AC77024E6681E00F548F1 /* LaunchScreen.storyboard */; };
-		E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */; };
+		E43AC78A24E7566A00F548F1 /* Login+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* Login+Register.swift */; };
 		E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */; };
 		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
 		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
@@ -57,7 +57,7 @@
 		E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E43AC77124E6681E00F548F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E43AC77324E6681E00F548F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegister.swift; sourceTree = "<group>"; };
+		E43AC78924E7566A00F548F1 /* Login+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Register.swift"; sourceTree = "<group>"; };
 		E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListRow.swift; sourceTree = "<group>"; };
 		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -111,6 +111,55 @@
 				E404568D24EA070600EC3356 /* FetchData.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E404569324EA119600EC3356 /* Login+Register */ = {
+			isa = PBXGroup;
+			children = (
+				E43AC78924E7566A00F548F1 /* Login+Register.swift */,
+			);
+			path = "Login+Register";
+			sourceTree = "<group>";
+		};
+		E404569424EA11A200EC3356 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E4A75D4824E7B821007095D7 /* Dashboard.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E404569524EA11F400EC3356 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E4A75D4624E7B784007095D7 /* MainView.swift */,
+				E43AC76924E6681C00F548F1 /* TabView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E404569624EA120D00EC3356 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E419D9E024E90939008145F8 /* ProgressBar.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E404569724EA121D00EC3356 /* RecordList */ = {
+			isa = PBXGroup;
+			children = (
+				E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */,
+			);
+			path = RecordList;
+			sourceTree = "<group>";
+		};
+		E404569824EA123400EC3356 /* AddRecord */ = {
+			isa = PBXGroup;
+			children = (
+				E4F2192D24E91C5C000B45DF /* AddRecordView.swift */,
+			);
+			path = AddRecord;
 			sourceTree = "<group>";
 		};
 		E419D9D824E8F165008145F8 /* Realm */ = {
@@ -180,13 +229,12 @@
 		E43AC79424E7678500F548F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E43AC78924E7566A00F548F1 /* LoginAndRegister.swift */,
-				E4A75D4624E7B784007095D7 /* MainView.swift */,
-				E4A75D4824E7B821007095D7 /* Dashboard.swift */,
-				E43AC76924E6681C00F548F1 /* TabView.swift */,
-				E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */,
-				E419D9E024E90939008145F8 /* ProgressBar.swift */,
-				E4F2192D24E91C5C000B45DF /* AddRecordView.swift */,
+				E404569824EA123400EC3356 /* AddRecord */,
+				E404569724EA121D00EC3356 /* RecordList */,
+				E404569624EA120D00EC3356 /* Shared */,
+				E404569524EA11F400EC3356 /* Base */,
+				E404569424EA11A200EC3356 /* Dashboard */,
+				E404569324EA119600EC3356 /* Login+Register */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,7 +404,7 @@
 				E4A75D4924E7B821007095D7 /* Dashboard.swift in Sources */,
 				E4A75D4724E7B784007095D7 /* MainView.swift in Sources */,
 				E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */,
-				E43AC78A24E7566A00F548F1 /* LoginAndRegister.swift in Sources */,
+				E43AC78A24E7566A00F548F1 /* Login+Register.swift in Sources */,
 				E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */,
 				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
 				E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */,
@@ -507,7 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 265;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
@@ -532,7 +580,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 265;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;

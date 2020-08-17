@@ -17,4 +17,8 @@ struct RealmDatabase {
             realm.add(record, update: .modified)
         }
     }
+    
+//    func addRecord(recordDict: Dictionary, type: Object.Type) {
+//        
+//    }
 }

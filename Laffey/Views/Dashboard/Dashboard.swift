@@ -81,13 +81,16 @@ struct Dashboard: View {
     }
     
     func fetchAllRecords() {
-        FetchData().fetchAllTeamRecords { (error) in
-            if let error = error {
-                self.displayError(message: error.localizedDescription)
-            } else {
+        FetchData().fetchAllTeamRecords { (response) in
+            switch response {
+            case .success:
                 DispatchQueue.main.async {
                     self.refreshData()
                 }
+            case let .error(error):
+                self.displayError(message: error.localizedDescription)
+            case .noUpdate:
+                break
             }
         }
     }

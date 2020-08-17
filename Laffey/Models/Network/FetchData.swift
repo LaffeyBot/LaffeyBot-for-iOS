@@ -38,4 +38,39 @@ struct FetchData {
             }
         }
     }
+    
+    func fetchAllPersonalRecords(completion: @escaping (FetchDataResponseType) -> Void) {
+        provider.request(.getRecords(
+            updatedSince: String(Preferences().personalRecordLastUpdated
+        ), type: "personal")) { result in
+            switch result {
+            case let .success(response):
+                let statusCode = response.statusCode
+                guard statusCode != 304 else {
+                    completion(.noUpdate)
+                    return
+                }
+                guard let json = try? JSON(data: response.data) else {
+                    print(String(data: response.data, encoding: .utf8) ?? "")
+                    return
+                }
+                
+                if let timestamp = json["time"].int {
+                    var pref = Preferences()
+                    pref.personalRecordLastUpdated = timestamp
+                }
+                
+                let realm = RealmDatabase()
+                for record in json["data"].arrayValue {
+                    if let dictRow = record.dictionaryObject {
+                        realm.addRecord(record: PersonalRecord(value: dictRow))
+                    }
+                }
+                
+                completion(.success)
+            case let .failure(error):
+                completion(.error(error: error))
+            }
+        }
+    }
 }

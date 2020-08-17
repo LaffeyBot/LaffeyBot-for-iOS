@@ -129,12 +129,10 @@ struct AddRecordView: View {
                 print(String(data: response.request?.httpBody ?? Data(), encoding: .utf8))
                 print(String(data: response.data, encoding: .utf8))
                 if let json = try? JSON(data: response.data) {
-                    let realm = try! Realm()
+                    let realm = RealmDatabase()
                     if let dictRow = json["team_record"].dictionaryObject {
                         let recordToAdd = TeamRecord(value: dictRow)
-                        try! realm.write {
-                            realm.add(recordToAdd, update: .modified)
-                        }
+                        realm.addRecord(record: recordToAdd)
                         
                         DispatchQueue.main.async {
 //                            withAnimation {

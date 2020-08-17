@@ -81,26 +81,13 @@ struct Dashboard: View {
     }
     
     func fetchAllRecords() {
-        provider.request(.getRecords(updatedSince: "0", type: "team")) { (result) in
-            switch result {
-            case let .success(response):
-                print(String(data: response.data, encoding: .utf8) ?? "")
-                if let json = try? JSON(data: response.data) {
-                    let realm = try! Realm()
-                    for record in json["data"].arrayValue {
-                        if let dictRow = record.dictionaryObject {
-                            try! realm.write {
-                                realm.add(TeamRecord(value: dictRow), update: .modified)
-                            }
-                        }
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.refreshData()
-                    }
-                }
-            case let .failure(error):
+        FetchData().fetchAllTeamRecords { (error) in
+            if let error = error {
                 self.displayError(message: error.localizedDescription)
+            } else {
+                DispatchQueue.main.async {
+                    self.refreshData()
+                }
             }
         }
     }

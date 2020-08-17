@@ -38,6 +38,15 @@ public struct Preferences {
         }
     }
     
+    public var personalRecordLastUpdated: Int {  // 这是一个timestamp
+        get {
+            return userDefaults.integer(forKey: "personalRecordLastUpdated" )
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "personalRecordLastUpdated" )
+        }
+    }
+    
     public var userID: Int {
         get {
             return userDefaults.integer(forKey: "userID")

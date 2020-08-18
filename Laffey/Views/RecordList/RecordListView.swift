@@ -11,19 +11,27 @@ import RealmSwift
 
 struct RecordListView: View {
     @State var recordList: Results<PersonalRecord> = RealmDatabase().getAllPersonalRecords()
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(recordList, id: \.id) { record in
                     RecordListRow(record: record)
                         .frame(maxWidth: .infinity)
+                        .transition(.opacity)
                 }
+                .animation(.easeInOut)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             
         .navigationBarTitle("出刀记录")
         }
         .onAppear() {
+            self.fetchAllRecords()
+        }
+        
+        .onReceive(timer) { _ in
             self.fetchAllRecords()
         }
     }

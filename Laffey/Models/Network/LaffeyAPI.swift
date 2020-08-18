@@ -17,6 +17,7 @@ enum LaffeyAPI {
     case requestOTP(email: String, for: String)
     case getRecords(updatedSince: String = "", type: String = "personal")
     case addRecord(recordForm: RecordForm)
+    case linkToken(token: String)
 }
 
 extension LaffeyAPI: TargetType {
@@ -33,11 +34,13 @@ extension LaffeyAPI: TargetType {
             return "/v1/record/get_records"
         case .addRecord:
             return "/v1/record/add_record"
+        case .linkToken:
+            return "/v1/push/link_token"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .register, .login, .requestOTP, .addRecord:
+        case .register, .login, .requestOTP, .addRecord, .linkToken:
             return .post
         case .getRecords:
             return .get
@@ -68,6 +71,11 @@ extension LaffeyAPI: TargetType {
                 "boss_gen": Int(recordForm.boss_gen) ?? 0,
                 "boss_order": recordForm.boss_order + 1
             ], encoding: JSONEncoding.default)
+        case let .linkToken(token):
+            return .requestParameters(parameters: [
+                "token": token,
+                "platform": "ios"
+            ], encoding: JSONEncoding.default)
         }
     }
     var sampleData: Data {
@@ -76,7 +84,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord:
+        case .getRecords, .addRecord, .linkToken:
             header["auth"] = Preferences().authToken
         default:
             break

@@ -21,92 +21,96 @@ struct LoginAndRegister: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack {
-            Text(isRegistration ? "注册" : "登录")
-                .bold()
-                .font(.title)
-                .transition(.slide)
-            .padding()
-            .animation(.none)
-            
-            Button(action: {
-                withAnimation {
-                    self.isRegistration.toggle()
+        ScrollView {
+            VStack {
+                Spacer()
+                
+                Text(isRegistration ? "注册" : "登录")
+                    .bold()
+                    .font(.title)
+                    .transition(.slide)
+                .padding()
+                .animation(.none)
+                
+                Button(action: {
+                    withAnimation {
+                        self.isRegistration.toggle()
+                    }
+                }) {
+                    Text(isRegistration ?
+                        "已有账号？请登录" : "还没有账号？请注册")
+                        .transition(.opacity)
+                        .foregroundColor(Color.salmon)
                 }
-            }) {
-                Text(isRegistration ?
-                    "已有账号？请登录" : "还没有账号？请注册")
-                    .transition(.opacity)
-                    .foregroundColor(Color.salmon)
-            }
-            .padding()
-            
-            TextField(isRegistration ? "用户名" : "用户名/邮箱/手机号",
-                      text: $regForm.username)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .padding(.horizontal, 30)
-            Divider()
-                .padding([.leading, .bottom, .trailing], 30)
-            
-            SecureField("密码", text: $regForm.password)
-                .padding(.horizontal, 30)
-            Divider()
-                .padding([.leading, .bottom, .trailing], 30)
-            
-            if isRegistration {
-                TextField("邮箱", text: $regForm.email)
-                    .padding(.horizontal, 30)
+                .padding()
+                
+                TextField(isRegistration ? "用户名" : "用户名/邮箱/手机号",
+                          text: $regForm.username)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
+                    .padding(.horizontal, 30)
                 Divider()
-                    .padding([.leading, .trailing], 30)
+                    .padding([.leading, .bottom, .trailing], 30)
                 
-                Button(action: {
-                    self.sendOTP(to: self.regForm.email)
-                }) {
-                    Text(didSendOTP ? (String(describing: timeRemaining) + "秒后可重新发送") : "发送验证码")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-                }
-                .font(.headline)
-                .background(didSendOTP ? Color.gray : Color.salmon)
-                .foregroundColor(.white)
-                .disabled(didSendOTP)
-                .cornerRadius(40)
-                .padding(30)
+                SecureField("密码", text: $regForm.password)
+                    .padding(.horizontal, 30)
+                Divider()
+                    .padding([.leading, .bottom, .trailing], 30)
                 
-                if didSendOTPOnce {
-                    TextField("邮箱验证码", text: $regForm.otp)
+                if isRegistration {
+                    TextField("邮箱", text: $regForm.email)
                         .padding(.horizontal, 30)
-                        .transition(.opacity)
-                        .keyboardType(.numberPad)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                     Divider()
                         .padding([.leading, .trailing], 30)
-                        .transition(.opacity)
+                    
+                    Button(action: {
+                        self.sendOTP(to: self.regForm.email)
+                    }) {
+                        Text(didSendOTP ? (String(describing: timeRemaining) + "秒后可重新发送") : "发送验证码")
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    }
+                    .font(.headline)
+                    .background(didSendOTP ? Color.gray : Color.salmon)
+                    .foregroundColor(.white)
+                    .disabled(didSendOTP)
+                    .cornerRadius(40)
+                    .padding(30)
+                    
+                    if didSendOTPOnce {
+                        TextField("邮箱验证码", text: $regForm.otp)
+                            .padding(.horizontal, 30)
+                            .transition(.opacity)
+                            .keyboardType(.numberPad)
+                        Divider()
+                            .padding([.leading, .trailing], 30)
+                            .transition(.opacity)
+                    }
+                }
+                
+                if doShowError {
+                    Text(self.errorMessage)
+                        .foregroundColor(Color.red)
+                }
+                
+                if !isRegistration || didSendOTPOnce {
+                    // 如果不是注册，或者是注册且已发送OTP
+                    Button(action: {
+                        self.isRegistration ? self.doRegister() : self.doLogin()
+                    }) {
+                        Text(isRegistration ? "注册" : "登录")
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    }
+                    .font(.headline)
+                    .background(Color.salmon)
+                    .foregroundColor(.white)
+                    .cornerRadius(40)
+                    .padding(30)
                 }
             }
-            
-            if doShowError {
-                Text(self.errorMessage)
-                    .foregroundColor(Color.red)
-            }
-            
-            if !isRegistration || didSendOTPOnce {
-                // 如果不是注册，或者是注册且已发送OTP
-                Button(action: {
-                    self.isRegistration ? self.doRegister() : self.doLogin()
-                }) {
-                    Text(isRegistration ? "注册" : "登录")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-                }
-                .font(.headline)
-                .background(Color.salmon)
-                .foregroundColor(.white)
-                .cornerRadius(40)
-                .padding(30)
-            }
+            .keyboardResponsive()
         }
-        .keyboardResponsive()
         .onReceive(timer) { time in
             if self.timeRemaining > 0 && self.didSendOTP {
                 self.timeRemaining -= 1
@@ -136,7 +140,7 @@ struct LoginAndRegister: View {
                 let decoder = JSONDecoder()
                 if let json = try? decoder.decode(LoginResponse.self, from: moyaResponse.data) {
                     // 登录成功
-                    var pref = Preferences()
+                    let pref = Preferences()
                     pref.authToken = json.jwt
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password

@@ -10,7 +10,7 @@ import Foundation
 
 fileprivate let userDefaults = UserDefaults(suiteName: "group.works.dd.Laffey")!
 
-public struct Preferences {
+public class Preferences {
     public var username: String {
         get {
             return userDefaults.string(forKey: "username" ) ?? ""
@@ -62,6 +62,24 @@ public struct Preferences {
         }
         set (value) {
             userDefaults.set(value, forKey: "didLogin" )
+        }
+    }
+    
+    public var didEnablePN: Bool {
+        get {
+            return userDefaults.bool(forKey: "didEnablePN" )
+        }
+        set (value) {
+            userDefaults.set(value, forKey: "didEnablePN" )
+        }
+    }
+    
+    public var didPromptPN: Bool {
+        get {
+            return userDefaults.bool(forKey: "didPromptPN" )
+        }
+        set (value) {
+            userDefaults.set(value, forKey: "didPromptPN" )
         }
     }
 }

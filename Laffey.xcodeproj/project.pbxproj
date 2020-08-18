@@ -7,14 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F6EAFEAF2197D19210529D5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCA79C79C294F484478E5D /* libz.tbd */; };
-		303FB7DD7B8B05B912CE9FF5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3E3696D28CAE95E038FB69 /* libsqlite3.0.tbd */; };
 		3808CFC0B8B83D42C8D880DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307650501806402216215292 /* CoreData.framework */; };
 		6483A31CB920A4820808BCF6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C40F4AB17B0F8329AE496B /* Security.framework */; };
-		8B2697D197C706774763E479 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A5F95B33A33B7DB2454A0 /* CFNetwork.framework */; };
-		BA3CB33D7687A9915CE5C2BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F413DCDACEBAA2969CA4F4 /* SystemConfiguration.framework */; };
-		E0D54A2D5E9222DEFA9D90DE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D93959F15FE4EC281D20F8 /* UserNotifications.framework */; };
-		E35BB1F6EBD6DA8E561B94C2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E35BF93A25E9F18FB40304 /* CoreTelephony.framework */; };
+		A88ADF770099299D9299BD00 /* Pods_Laffey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E010F18881BFA2C9E0BFBCC /* Pods_Laffey.framework */; };
 		E404568924E9FCC300EC3356 /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404568824E9FCC300EC3356 /* RealmDatabase.swift */; };
 		E404568B24E9FEB000EC3356 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404568A24E9FEB000EC3356 /* User.swift */; };
 		E404568E24EA070600EC3356 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404568D24EA070600EC3356 /* FetchData.swift */; };
@@ -40,30 +35,30 @@
 		E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */; };
 		E4A75D4724E7B784007095D7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4624E7B784007095D7 /* MainView.swift */; };
 		E4A75D4924E7B821007095D7 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D4824E7B821007095D7 /* Dashboard.swift */; };
-		E4B84AE924EA4C2800D11BFD /* libXG-SDK-Cloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F026C897C68F14518A32DB /* libXG-SDK-Cloud.a */; };
-		E4B84AEA24EA4C5500D11BFD /* XGMTACloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A7DA7CDBDB03B47F9B15FA /* XGMTACloud.framework */; };
+		E4B84AED24EA70A800D11BFD /* PNPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B84AEC24EA70A800D11BFD /* PNPromptView.swift */; };
+		E4B84AF224EABB1C00D11BFD /* XGMTACloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF124EABB0400D11BFD /* XGMTACloud.framework */; };
+		E4B84AF424EABB2A00D11BFD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF324EABB2A00D11BFD /* CoreTelephony.framework */; };
+		E4B84AF624EABB3500D11BFD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF524EABB3500D11BFD /* SystemConfiguration.framework */; };
+		E4B84AF824EABB4200D11BFD /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF724EABB4200D11BFD /* UserNotifications.framework */; };
+		E4B84AF924EABB5D00D11BFD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCA79C79C294F484478E5D /* libz.tbd */; };
+		E4B84AFA24EABB5F00D11BFD /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3E3696D28CAE95E038FB69 /* libsqlite3.0.tbd */; };
+		E4B84AFB24EABB6100D11BFD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A5F95B33A33B7DB2454A0 /* CFNetwork.framework */; };
+		E4B84AFC24EABB8100D11BFD /* libXG-SDK-Cloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF024EABAEE00D11BFD /* libXG-SDK-Cloud.a */; };
+		E4B84AFE24EABB9400D11BFD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AFD24EABB9400D11BFD /* libc++.tbd */; };
 		E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB85CD24E7BA7400DF40BC /* Shared.swift */; };
 		E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2540924E90BC50049A11C /* BossHealth.swift */; };
 		E4F2192A24E91BD5000B45DF /* RecordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2192924E91BD5000B45DF /* RecordForm.swift */; };
 		E4F2192E24E91C5C000B45DF /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2192D24E91C5C000B45DF /* AddRecordView.swift */; };
-		E94D3A30F6BC9E339ED51425 /* Pods_Laffey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E702C8A75D67660C914233 /* Pods_Laffey.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.debug.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.debug.xcconfig"; sourceTree = "<group>"; };
+		24B47CDF70E07D68BCB0B6E8 /* Pods-Laffey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.debug.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.debug.xcconfig"; sourceTree = "<group>"; };
 		307650501806402216215292 /* CoreData.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = "<group>"; };
-		58A7DA7CDBDB03B47F9B15FA /* XGMTACloud.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = XGMTACloud.framework; path = /Users/daiyuanping/Documents/Laffey/XG/XGMTACloud.framework; sourceTree = "<group>"; };
-		67E702C8A75D67660C914233 /* Pods_Laffey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laffey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		69F413DCDACEBAA2969CA4F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
-		71E35BF93A25E9F18FB40304 /* CoreTelephony.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = "<group>"; };
+		3E010F18881BFA2C9E0BFBCC /* Pods_Laffey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laffey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCA79C79C294F484478E5D /* libz.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.tbd; sourceTree = "<group>"; };
-		969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.release.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.release.xcconfig"; sourceTree = "<group>"; };
-		98F026C897C68F14518A32DB /* libXG-SDK-Cloud.a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = archive.ar; path = "libXG-SDK-Cloud.a"; sourceTree = "<group>"; };
 		BB3E3696D28CAE95E038FB69 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = "<group>"; };
-		BDC4D6D25FEAC7B62C32E87C /* Laffey-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Laffey-Bridging-Header.h"; sourceTree = "<group>"; };
 		C5C40F4AB17B0F8329AE496B /* Security.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = Security.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework; sourceTree = "<group>"; };
-		CAECEC59EAEDDBC41B745376 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
-		D4D93959F15FE4EC281D20F8 /* UserNotifications.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = "<group>"; };
+		D9B488BCCC77F99EE66EDBDB /* Pods-Laffey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laffey.release.xcconfig"; path = "Target Support Files/Pods-Laffey/Pods-Laffey.release.xcconfig"; sourceTree = "<group>"; };
 		E21A5F95B33A33B7DB2454A0 /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = "<group>"; };
 		E404568824E9FCC300EC3356 /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
 		E404568A24E9FEB000EC3356 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -92,6 +87,15 @@
 		E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		E4A75D4624E7B784007095D7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E4A75D4824E7B821007095D7 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		E4B84AEC24EA70A800D11BFD /* PNPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNPromptView.swift; sourceTree = "<group>"; };
+		E4B84AEF24EABAE300D11BFD /* XGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		E4B84AF024EABAEE00D11BFD /* libXG-SDK-Cloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK-Cloud.a"; sourceTree = "<group>"; };
+		E4B84AF124EABB0400D11BFD /* XGMTACloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XGMTACloud.framework; sourceTree = "<group>"; };
+		E4B84AF324EABB2A00D11BFD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E4B84AF524EABB3500D11BFD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E4B84AF724EABB4200D11BFD /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		E4B84AFD24EABB9400D11BFD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E4B84AFF24EABC2D00D11BFD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E4BB85CD24E7BA7400DF40BC /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		E4D2540924E90BC50049A11C /* BossHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossHealth.swift; sourceTree = "<group>"; };
 		E4F2192924E91BD5000B45DF /* RecordForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordForm.swift; sourceTree = "<group>"; };
@@ -103,47 +107,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B84AFE24EABB9400D11BFD /* libc++.tbd in Frameworks */,
+				E4B84AF924EABB5D00D11BFD /* libz.tbd in Frameworks */,
+				E4B84AFA24EABB5F00D11BFD /* libsqlite3.0.tbd in Frameworks */,
+				E4B84AFB24EABB6100D11BFD /* CFNetwork.framework in Frameworks */,
+				E4B84AF824EABB4200D11BFD /* UserNotifications.framework in Frameworks */,
+				E4B84AF624EABB3500D11BFD /* SystemConfiguration.framework in Frameworks */,
+				E4B84AFC24EABB8100D11BFD /* libXG-SDK-Cloud.a in Frameworks */,
+				E4B84AF424EABB2A00D11BFD /* CoreTelephony.framework in Frameworks */,
 				E4A75D3924E7A02E007095D7 /* Moya in Frameworks */,
-				E94D3A30F6BC9E339ED51425 /* Pods_Laffey.framework in Frameworks */,
-				2F6EAFEAF2197D19210529D5 /* libz.tbd in Frameworks */,
-				303FB7DD7B8B05B912CE9FF5 /* libsqlite3.0.tbd in Frameworks */,
-				8B2697D197C706774763E479 /* CFNetwork.framework in Frameworks */,
-				BA3CB33D7687A9915CE5C2BC /* SystemConfiguration.framework in Frameworks */,
-				E4B84AEA24EA4C5500D11BFD /* XGMTACloud.framework in Frameworks */,
-				E35BB1F6EBD6DA8E561B94C2 /* CoreTelephony.framework in Frameworks */,
 				6483A31CB920A4820808BCF6 /* Security.framework in Frameworks */,
-				E4B84AE924EA4C2800D11BFD /* libXG-SDK-Cloud.a in Frameworks */,
-				E0D54A2D5E9222DEFA9D90DE /* UserNotifications.framework in Frameworks */,
+				E4B84AF224EABB1C00D11BFD /* XGMTACloud.framework in Frameworks */,
 				3808CFC0B8B83D42C8D880DD /* CoreData.framework in Frameworks */,
+				A88ADF770099299D9299BD00 /* Pods_Laffey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		727F7EC30AF01C19B61F88A5 /* XG */ = {
-			isa = PBXGroup;
-			children = (
-				98F026C897C68F14518A32DB /* libXG-SDK-Cloud.a */,
-				CAECEC59EAEDDBC41B745376 /* XGPush.h */,
-				BDC4D6D25FEAC7B62C32E87C /* Laffey-Bridging-Header.h */,
-			);
-			path = XG;
-			sourceTree = "<group>";
-		};
 		9444172466BDCBAA3C474DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67E702C8A75D67660C914233 /* Pods_Laffey.framework */,
+				E4B84AFD24EABB9400D11BFD /* libc++.tbd */,
+				E4B84AF724EABB4200D11BFD /* UserNotifications.framework */,
+				E4B84AF524EABB3500D11BFD /* SystemConfiguration.framework */,
+				E4B84AF324EABB2A00D11BFD /* CoreTelephony.framework */,
 				8CFCA79C79C294F484478E5D /* libz.tbd */,
 				BB3E3696D28CAE95E038FB69 /* libsqlite3.0.tbd */,
 				E21A5F95B33A33B7DB2454A0 /* CFNetwork.framework */,
-				69F413DCDACEBAA2969CA4F4 /* SystemConfiguration.framework */,
-				71E35BF93A25E9F18FB40304 /* CoreTelephony.framework */,
 				C5C40F4AB17B0F8329AE496B /* Security.framework */,
-				D4D93959F15FE4EC281D20F8 /* UserNotifications.framework */,
 				307650501806402216215292 /* CoreData.framework */,
-				58A7DA7CDBDB03B47F9B15FA /* XGMTACloud.framework */,
+				3E010F18881BFA2C9E0BFBCC /* Pods_Laffey.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,8 +146,8 @@
 		9FD4C3BA4F469576531C6991 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */,
-				969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */,
+				24B47CDF70E07D68BCB0B6E8 /* Pods-Laffey.debug.xcconfig */,
+				D9B488BCCC77F99EE66EDBDB /* Pods-Laffey.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -239,11 +234,12 @@
 		E43AC75624E6681C00F548F1 = {
 			isa = PBXGroup;
 			children = (
+				E4B84AFF24EABC2D00D11BFD /* Bridging-Header.h */,
+				E4B84AEE24EABAC100D11BFD /* XG */,
 				E43AC76124E6681C00F548F1 /* Laffey */,
 				E43AC76024E6681C00F548F1 /* Products */,
 				9FD4C3BA4F469576531C6991 /* Pods */,
 				9444172466BDCBAA3C474DA4 /* Frameworks */,
-				727F7EC30AF01C19B61F88A5 /* XG */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,6 +280,7 @@
 		E43AC79424E7678500F548F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4B84AEB24EA708E00D11BFD /* PNPromptView */,
 				E404569824EA123400EC3356 /* AddRecord */,
 				E404569724EA121D00EC3356 /* RecordList */,
 				E404569624EA120D00EC3356 /* Shared */,
@@ -309,6 +306,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E4B84AEB24EA708E00D11BFD /* PNPromptView */ = {
+			isa = PBXGroup;
+			children = (
+				E4B84AEC24EA70A800D11BFD /* PNPromptView.swift */,
+			);
+			path = PNPromptView;
+			sourceTree = "<group>";
+		};
+		E4B84AEE24EABAC100D11BFD /* XG */ = {
+			isa = PBXGroup;
+			children = (
+				E4B84AF124EABB0400D11BFD /* XGMTACloud.framework */,
+				E4B84AF024EABAEE00D11BFD /* libXG-SDK-Cloud.a */,
+				E4B84AEF24EABAE300D11BFD /* XGPush.h */,
+			);
+			path = XG;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -316,12 +331,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E43AC77624E6681E00F548F1 /* Build configuration list for PBXNativeTarget "Laffey" */;
 			buildPhases = (
-				8AA4B1B51320F83718274AA3 /* [CP] Check Pods Manifest.lock */,
+				95B13B89B5E5421CCC349EAB /* [CP] Check Pods Manifest.lock */,
 				E43AC75B24E6681C00F548F1 /* Sources */,
 				E43AC75C24E6681C00F548F1 /* Frameworks */,
 				E43AC75D24E6681C00F548F1 /* Resources */,
 				E4A75D4024E7ADA8007095D7 /* ShellScript */,
-				ED2D9DBB80A9CA58DE10EC17 /* [CP] Embed Pods Frameworks */,
+				4335D75666FF2802EDF96FE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,7 +400,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8AA4B1B51320F83718274AA3 /* [CP] Check Pods Manifest.lock */ = {
+		4335D75666FF2802EDF96FE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95B13B89B5E5421CCC349EAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,24 +454,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
-		};
-		ED2D9DBB80A9CA58DE10EC17 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laffey/Pods-Laffey-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -464,6 +479,7 @@
 				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
 				E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */,
 				E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */,
+				E4B84AED24EA70A800D11BFD /* PNPromptView.swift in Sources */,
 				E404569B24EA127D00EC3356 /* RecordListView.swift in Sources */,
 				E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */,
 				E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */,
@@ -606,12 +622,12 @@
 		};
 		E43AC77724E6681E00F548F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23BEE2CA807642820DCDFD5D /* Pods-Laffey.debug.xcconfig */;
+			baseConfigurationReference = 24B47CDF70E07D68BCB0B6E8 /* Pods-Laffey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 385;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
@@ -632,7 +648,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = works.dd.Laffey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Laffey/Laffey-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -641,12 +657,12 @@
 		};
 		E43AC77824E6681E00F548F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 969037D146C594FEE91D76BF /* Pods-Laffey.release.xcconfig */;
+			baseConfigurationReference = D9B488BCCC77F99EE66EDBDB /* Pods-Laffey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 385;
 				DEVELOPMENT_ASSET_PATHS = "\"Laffey/Preview Content\"";
 				DEVELOPMENT_TEAM = HWH6G9P2V2;
 				ENABLE_PREVIEWS = YES;
@@ -667,7 +683,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = works.dd.Laffey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Laffey/Laffey-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

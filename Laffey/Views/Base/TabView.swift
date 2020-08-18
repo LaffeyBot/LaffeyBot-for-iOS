@@ -19,7 +19,7 @@ struct ContentView: View {
                 }
                 .tabItem {
                     VStack {
-                        Image(selection == 0 ? "TimetableSelected" : "Timetable")
+                        Image(selection == 0 ? "TodaySelected" : "Today")
                         Text("主页")
                     }
                 }
@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 .tabItem {
                     VStack {
-                        Image(selection == 0 ? "TimetableSelected" : "Timetable")
+                        Image(selection == 1 ? "TimetableSelected" : "Timetable")
                         Text("记录")
                     }
                 }

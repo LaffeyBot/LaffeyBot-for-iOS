@@ -20,6 +20,8 @@ struct Dashboard: View {
     @State var hasError = false
     @State var errorText = ""
     
+    @State var doPresentPNPrompt = !Preferences().didPromptPN
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -78,8 +80,8 @@ struct Dashboard: View {
                        currentRecord: currentRecord)
                 }
             }
+            .keyboardResponsive()
         }
-        .keyboardResponsive()
         .onAppear() {
             print("DASHBOARD IS VISIBLE")
             self.fetchAllRecords()
@@ -87,6 +89,9 @@ struct Dashboard: View {
         .onReceive(timer) { _ in
             self.fetchAllRecords()
         }
+        .sheet(isPresented: $doPresentPNPrompt, content: {
+            PNPromptView(doPresentPNPrompt: $doPresentPNPrompt)
+        })
     }
     
     func fetchAllRecords() {

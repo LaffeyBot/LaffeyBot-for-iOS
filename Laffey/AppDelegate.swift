@@ -8,17 +8,38 @@
 
 import UIKit
 import CoreData
+import XGMTACloud
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, XGPushDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-XGPush.defaultManager().startXG(withAppID:1600012020, appKey:"I8H2ON40VAM2", delegate:nil)
+        if Preferences().didEnablePN {
+            XGPush.defaultManager().startXG(withAccessID: 1600012020, accessKey: "I8H2ON40VAM2", delegate: self)
+        }
 
         // Override point for customization after application launch.
         return true
+    }
+    
+    
+    func xgPushDidRegisteredDeviceToken(_ deviceToken: String?, xgToken: String?, error: Error?) {
+        if let token = xgToken {
+            print("TOKEN: " + token)
+            provider.request(.linkToken(token: token)) { result in
+                switch result {
+                case let .success(response):
+                    if response.statusCode == 200 {
+                        Preferences().didEnablePN = true
+                    }
+                    print(try? response.mapJSON())
+                default:
+                    break
+                }
+            }
+        }
     }
 
     // MARK: UISceneSession Lifecycle

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public class User: Codable, Identifiable {
+public class User: Codable, Identifiable, Equatable {
     public var id: Int
     var group_id: Int?
     var role: Int
@@ -24,5 +24,9 @@ public class User: Codable, Identifiable {
         self.role = role
         self.username = username
         self.nickname = nickname
+    }
+    
+    public static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
     }
 }

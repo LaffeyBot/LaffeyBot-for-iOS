@@ -47,7 +47,11 @@ struct MemberSelector: View {
             switch response {
             case let .success(data):
                 withAnimation {
-                    self.memberList = data
+                    self.memberList = data.filter({ (user) -> Bool in
+                        user.id != Preferences().userID  // 你不能把你自己踢了。
+                    }).sorted(by: { (a, b) -> Bool in
+                        a.nickname < b.nickname
+                    })
                 }
             case .error(_):
                 break

@@ -14,8 +14,11 @@ struct Dashboard: View {
     @Environment(\.managedObjectContext) var moc
     @State var recordList: Results<TeamRecord>?
     @ObservedObject var currentRecord: TeamRecordNative = RealmDatabase().getCurrentTeamRecord(current: TeamRecordNative())
+    
     @State var isAddingRecord: Bool = false
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    
+    @State var isFetching: Bool = false
     
     @State var hasError = false
     @State var errorText = ""
@@ -23,67 +26,66 @@ struct Dashboard: View {
     @State var doPresentPNPrompt = !Preferences().didPromptPN
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Spacer()
-                Text("当前攻略")
-                    .font(.largeTitle)
+        ZStack {
+            ScrollView {
+                VStack {
+                    Spacer()
+                    DashboardStatsView(currentRecord: currentRecord)
+                    
+                    if hasError {
+                        Text("错误：" + self.errorText)
+                            .foregroundColor(.red)
+                    }
+                    
+                    Button(action: {
+                        withAnimation {
+                            self.isAddingRecord = true
+                        }
+                    }) {
+                        Text("报刀")
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    }
+                    .font(.headline)
+                    .background(Color.salmon)
+                    .foregroundColor(.white)
+                    .cornerRadius(40)
+                    .padding(30)
+                    .animation(.none)
                     .sheet(isPresented: $doPresentPNPrompt, content: {
                         PNPromptView(doPresentPNPrompt: $doPresentPNPrompt)
                     })
-                
-                VStack {
-                    HStack {
-                        Text(String(currentRecord.current_boss_gen))
-                        Text("周目")
-                    }
-                    HStack {
-                        Text(String(currentRecord.current_boss_order))
-                            .font(.largeTitle)
-                            .foregroundColor(Color.salmon)
-                        Text("王")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.salmon)
+                    
+                    if isAddingRecord {
+                        AddRecordView(recordForm:
+                            RecordForm(
+                                boss_gen: String(Int(currentRecord.current_boss_gen)),
+                                boss_order: Int(currentRecord.current_boss_order) - 1
+                        ), isAddingRecord: $isAddingRecord,
+                           currentRecord: currentRecord)
                     }
                 }
-                
-                Text("剩余血量：" + String(currentRecord.boss_remaining_health))
-                ProgressBar(value: $currentRecord.boss_health_percentage)
-                    .frame(minHeight: 30)
-                    .padding()
-                    .transition(.identity)
-                    .animation(.none)
-                
-                if hasError {
-                    Text("错误：" + self.errorText)
-                        .foregroundColor(.red)
-                }
-                
-                Button(action: {
-                    withAnimation {
-                        self.isAddingRecord = true
-                    }
-                }) {
-                    Text("报刀")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-                }
-                .font(.headline)
-                .background(Color.salmon)
-                .foregroundColor(.white)
-                .cornerRadius(40)
-                .padding(30)
-                .animation(.none)
-                
-                if isAddingRecord {
-                    AddRecordView(recordForm:
-                        RecordForm(
-                            boss_gen: String(Int(currentRecord.current_boss_gen)),
-                            boss_order: Int(currentRecord.current_boss_order) - 1
-                    ), isAddingRecord: $isAddingRecord,
-                       currentRecord: currentRecord)
-                }
+                .keyboardResponsive()
             }
-            .keyboardResponsive()
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.fetchAllRecords()
+                    }, label: {
+                        if isFetching {
+                            ActivityIndicatorView(isAnimating: .constant(true), style: .medium, color: UIColor.gray)
+                        } else {
+                            Text("刷新")
+                        }
+                    })
+                    .foregroundColor(.salmon)
+                    .disabled(isFetching)
+                    .padding(30)
+                }
+                
+                Spacer()
+            }
         }
         .onAppear() {
             print("DASHBOARD IS VISIBLE")
@@ -98,6 +100,7 @@ struct Dashboard: View {
     }
     
     func fetchAllRecords() {
+        self.isFetching = true
         FetchData().fetchAllTeamRecords { (response) in
             switch response {
             case .success:
@@ -111,6 +114,7 @@ struct Dashboard: View {
                 self.hasError = false
                 break
             }
+            self.isFetching = false
         }
     }
     

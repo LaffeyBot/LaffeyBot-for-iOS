@@ -11,6 +11,8 @@ import RealmSwift
 
 struct LogoutRow: View {
     @State var doShowAlert: Bool = false
+    @EnvironmentObject var shared: Shared
+    
     var body: some View {
         Button(action: {
             self.doShowAlert.toggle()
@@ -28,17 +30,18 @@ struct LogoutRow: View {
     }
     
     func doLogout() {
-        Preferences().myself = User(id: 0, group_id: nil, role: 0, username: "", nickname: "")
-        Preferences().didLogin = false
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        
-        if Preferences().didEnablePN {
-            provider.request(.unlinkToken(token: XGPushTokenManager.default().deviceTokenString ?? "")) { _ in
-                
+        DispatchQueue.main.async {
+            Preferences().myself = User(id: 0, group_id: nil, role: 0, username: "", nickname: "")
+            Preferences().didLogin = false
+            
+            if Preferences().didEnablePN {
+                provider.request(.unlinkToken(token: XGPushTokenManager.default().deviceTokenString ?? "")) { _ in
+                    self.shared.didlogin = false
+                }
+            } else {
+                self.shared.didlogin = false
             }
+            
         }
     }
 }
@@ -46,5 +49,6 @@ struct LogoutRow: View {
 struct LogoutRow_Previews: PreviewProvider {
     static var previews: some View {
         LogoutRow()
+            .environmentObject(Shared())
     }
 }

@@ -26,6 +26,7 @@ struct SettingsView: View {
                     }
                     
                     Section {
+                        LogoutRow()
                     }
                 }
                 .listStyle(GroupedListStyle())

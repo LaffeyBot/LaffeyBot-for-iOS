@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct LoginAndRegister: View {
     @State var isRegistration = true
@@ -105,6 +106,7 @@ struct LoginAndRegister: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                         } else {
                             ActivityIndicatorView(isAnimating: .constant(true), style: .medium, color: UIColor.white)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                         }
                         
                     }
@@ -116,6 +118,13 @@ struct LoginAndRegister: View {
                 }
             }
             .keyboardResponsive()
+        }
+        .onAppear() {
+            // 注：必须在此处重置数据库，否则可能会在清除过程中被其他view读取导致崩溃。
+            let realm = try! Realm()
+            try? realm.write {
+                realm.deleteAll()
+            }
         }
         .onReceive(timer) { time in
             if self.timeRemaining > 0 && self.didSendOTP {
@@ -129,7 +138,9 @@ struct LoginAndRegister: View {
     }
     
     func doLogin() {
+        self.isSubmitting = true
         provider.request(.login(loginForm: regForm)) { result in
+            self.isSubmitting = false
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode
@@ -167,7 +178,9 @@ struct LoginAndRegister: View {
     }
     
     func doRegister() {
+        self.isSubmitting = true
         provider.request(.register(regForm: regForm)) { result in
+            self.isSubmitting = false
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode
@@ -197,7 +210,6 @@ struct LoginAndRegister: View {
                     self.addDataToPreferences(response: json)
                     self.shared.didlogin = true
                 }
-                // do something with the response data or statusCode
             case let .failure(error):
                 self.displayAlert(message: "错误：" + error.localizedDescription)
             }

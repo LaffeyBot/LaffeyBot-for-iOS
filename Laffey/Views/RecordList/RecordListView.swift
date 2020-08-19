@@ -12,6 +12,7 @@ import RealmSwift
 struct RecordListView: View {
     @State var recordList: Results<PersonalRecord> = RealmDatabase().getAllPersonalRecords()
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State var isFetching: Bool = false
     
     var body: some View {
         NavigationView {
@@ -26,6 +27,17 @@ struct RecordListView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             
         .navigationBarTitle("出刀记录")
+        .navigationBarItems(trailing:
+                Button(action: {
+                    self.fetchAllRecords()
+                }, label: {
+                    if isFetching {
+                        ActivityIndicatorView(isAnimating: .constant(true), style: .medium, color: UIColor.gray)
+                    } else {
+                        Text("刷新")
+                    }
+            })
+        )
         }
         .onAppear() {
             self.fetchAllRecords()
@@ -37,6 +49,7 @@ struct RecordListView: View {
     }
     
     func fetchAllRecords() {
+        self.isFetching = true
         FetchData().fetchAllPersonalRecords { result in
             switch result {
             case .success:
@@ -46,6 +59,7 @@ struct RecordListView: View {
             case .noUpdate:
                 break
             }
+            self.isFetching = false
         }
     }
     

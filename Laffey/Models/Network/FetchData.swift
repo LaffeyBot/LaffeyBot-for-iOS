@@ -15,6 +15,11 @@ enum FetchDataResponseType {
     case noUpdate
 }
 
+enum GetMembersResponseType {
+    case success(data: [User])
+    case error(error: Error)
+}
+
 struct FetchData {
     func fetchAllTeamRecords(completion: @escaping (FetchDataResponseType) -> Void) {
         provider.request(.getRecords(updatedSince: "0", type: "team")) { (result) in
@@ -69,6 +74,19 @@ struct FetchData {
                 }
                 
                 completion(.success)
+            case let .failure(error):
+                completion(.error(error: error))
+            }
+        }
+    }
+    
+    func getCurrentMembers(completion: @escaping (GetMembersResponseType) -> Void) {
+        provider.request(.getMembers) { result in
+            switch result {
+            case let .success(response):
+                if let json = try? JSONDecoder().decode(GetMemberResponse.self, from: response.data) {
+                    completion(.success(data: json.data))
+                }
             case let .failure(error):
                 completion(.error(error: error))
             }

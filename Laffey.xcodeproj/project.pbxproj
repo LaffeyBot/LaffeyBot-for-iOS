@@ -15,6 +15,7 @@
 		E404568E24EA070600EC3356 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404568D24EA070600EC3356 /* FetchData.swift */; };
 		E404569024EA08D400EC3356 /* PersonalRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404568F24EA08D400EC3356 /* PersonalRecord.swift */; };
 		E404569B24EA127D00EC3356 /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404569A24EA127D00EC3356 /* RecordListView.swift */; };
+		E416360A24EBB9FA009B624E /* GetMemberResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416360924EBB9FA009B624E /* GetMemberResponse.swift */; };
 		E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9D924E8F179008145F8 /* TeamRecord.swift */; };
 		E419D9E124E90939008145F8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9E024E90939008145F8 /* ProgressBar.swift */; };
 		E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC76224E6681C00F548F1 /* AppDelegate.swift */; };
@@ -45,6 +46,10 @@
 		E4B84AFB24EABB6100D11BFD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A5F95B33A33B7DB2454A0 /* CFNetwork.framework */; };
 		E4B84AFC24EABB8100D11BFD /* libXG-SDK-Cloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AF024EABAEE00D11BFD /* libXG-SDK-Cloud.a */; };
 		E4B84AFE24EABB9400D11BFD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B84AFD24EABB9400D11BFD /* libc++.tbd */; };
+		E4B84B0324EBAEE900D11BFD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B84B0224EBAEE900D11BFD /* SettingsView.swift */; };
+		E4B84B0524EBAF4D00D11BFD /* AboutMeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B84B0424EBAF4D00D11BFD /* AboutMeRow.swift */; };
+		E4B84B0724EBB39000D11BFD /* CheckEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B84B0624EBB39000D11BFD /* CheckEmail.swift */; };
+		E4B84B0B24EBB7FE00D11BFD /* MemberSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B84B0A24EBB7FE00D11BFD /* MemberSelector.swift */; };
 		E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB85CD24E7BA7400DF40BC /* Shared.swift */; };
 		E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2540924E90BC50049A11C /* BossHealth.swift */; };
 		E4F2192A24E91BD5000B45DF /* RecordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F2192924E91BD5000B45DF /* RecordForm.swift */; };
@@ -65,6 +70,7 @@
 		E404568D24EA070600EC3356 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		E404568F24EA08D400EC3356 /* PersonalRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecord.swift; sourceTree = "<group>"; };
 		E404569A24EA127D00EC3356 /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
+		E416360924EBB9FA009B624E /* GetMemberResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMemberResponse.swift; sourceTree = "<group>"; };
 		E419D9D924E8F179008145F8 /* TeamRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRecord.swift; sourceTree = "<group>"; };
 		E419D9E024E90939008145F8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E43AC75F24E6681C00F548F1 /* Laffey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laffey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +102,10 @@
 		E4B84AF724EABB4200D11BFD /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E4B84AFD24EABB9400D11BFD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E4B84AFF24EABC2D00D11BFD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E4B84B0224EBAEE900D11BFD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E4B84B0424EBAF4D00D11BFD /* AboutMeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeRow.swift; sourceTree = "<group>"; };
+		E4B84B0624EBB39000D11BFD /* CheckEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmail.swift; sourceTree = "<group>"; };
+		E4B84B0A24EBB7FE00D11BFD /* MemberSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSelector.swift; sourceTree = "<group>"; };
 		E4BB85CD24E7BA7400DF40BC /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		E4D2540924E90BC50049A11C /* BossHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossHealth.swift; sourceTree = "<group>"; };
 		E4F2192924E91BD5000B45DF /* RecordForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordForm.swift; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				E419D9E024E90939008145F8 /* ProgressBar.swift */,
+				E4B84B0A24EBB7FE00D11BFD /* MemberSelector.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -216,7 +227,6 @@
 			children = (
 				E419D9D924E8F179008145F8 /* TeamRecord.swift */,
 				E404568824E9FCC300EC3356 /* RealmDatabase.swift */,
-				E404568A24E9FEB000EC3356 /* User.swift */,
 				E404568F24EA08D400EC3356 /* PersonalRecord.swift */,
 			);
 			path = Realm;
@@ -227,6 +237,7 @@
 			children = (
 				E4A75D4224E7B2B6007095D7 /* RegisterResponse.swift */,
 				E4A75D3C24E7A819007095D7 /* LoginResponse.swift */,
+				E416360924EBB9FA009B624E /* GetMemberResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -254,6 +265,7 @@
 		E43AC76124E6681C00F548F1 /* Laffey */ = {
 			isa = PBXGroup;
 			children = (
+				E4B84B0924EBB45700D11BFD /* Extensions */,
 				E4A75D4124E7AEBD007095D7 /* Laffey.entitlements */,
 				E4A75D3224E76DBF007095D7 /* Models */,
 				E43AC79424E7678500F548F1 /* Views */,
@@ -264,7 +276,6 @@
 				E43AC77324E6681E00F548F1 /* Info.plist */,
 				E43AC76624E6681C00F548F1 /* Laffey.xcdatamodeld */,
 				E43AC76D24E6681E00F548F1 /* Preview Content */,
-				E4A75D3524E77487007095D7 /* Extensions.swift */,
 			);
 			path = Laffey;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 		E43AC79424E7678500F548F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4B84B0024EBAEC000D11BFD /* SettingsView */,
 				E4B84AEB24EA708E00D11BFD /* PNPromptView */,
 				E404569824EA123400EC3356 /* AddRecord */,
 				E404569724EA121D00EC3356 /* RecordList */,
@@ -294,11 +306,12 @@
 		E4A75D3224E76DBF007095D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E404568A24E9FEB000EC3356 /* User.swift */,
+				E4F2192924E91BD5000B45DF /* RecordForm.swift */,
+				E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */,
 				E404568C24EA06D500EC3356 /* Network */,
 				E419D9DD24E8F656008145F8 /* Responses */,
 				E419D9D824E8F165008145F8 /* Realm */,
-				E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */,
-				E4F2192924E91BD5000B45DF /* RecordForm.swift */,
 				E4A75D3E24E7ACBE007095D7 /* Preferences.swift */,
 				E4BB85CD24E7BA7400DF40BC /* Shared.swift */,
 				E4D2540924E90BC50049A11C /* BossHealth.swift */,
@@ -322,6 +335,24 @@
 				E4B84AEF24EABAE300D11BFD /* XGPush.h */,
 			);
 			path = XG;
+			sourceTree = "<group>";
+		};
+		E4B84B0024EBAEC000D11BFD /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				E4B84B0224EBAEE900D11BFD /* SettingsView.swift */,
+				E4B84B0424EBAF4D00D11BFD /* AboutMeRow.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		E4B84B0924EBB45700D11BFD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4A75D3524E77487007095D7 /* Extensions.swift */,
+				E4B84B0624EBB39000D11BFD /* CheckEmail.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,14 +498,17 @@
 				E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */,
 				E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */,
 				E404569024EA08D400EC3356 /* PersonalRecord.swift in Sources */,
+				E4B84B0B24EBB7FE00D11BFD /* MemberSelector.swift in Sources */,
 				E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */,
 				E419D9E124E90939008145F8 /* ProgressBar.swift in Sources */,
 				E4F2192A24E91BD5000B45DF /* RecordForm.swift in Sources */,
 				E4F2192E24E91C5C000B45DF /* AddRecordView.swift in Sources */,
+				E4B84B0524EBAF4D00D11BFD /* AboutMeRow.swift in Sources */,
 				E4A75D4924E7B821007095D7 /* Dashboard.swift in Sources */,
 				E4A75D4724E7B784007095D7 /* MainView.swift in Sources */,
 				E4A75D4324E7B2B6007095D7 /* RegisterResponse.swift in Sources */,
 				E43AC78A24E7566A00F548F1 /* Login+Register.swift in Sources */,
+				E416360A24EBB9FA009B624E /* GetMemberResponse.swift in Sources */,
 				E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */,
 				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
 				E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */,
@@ -484,8 +518,10 @@
 				E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */,
 				E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */,
 				E404568924E9FCC300EC3356 /* RealmDatabase.swift in Sources */,
+				E4B84B0324EBAEE900D11BFD /* SettingsView.swift in Sources */,
 				E43AC76A24E6681C00F548F1 /* TabView.swift in Sources */,
 				E43AC76524E6681C00F548F1 /* SceneDelegate.swift in Sources */,
+				E4B84B0724EBB39000D11BFD /* CheckEmail.swift in Sources */,
 				E404568E24EA070600EC3356 /* FetchData.swift in Sources */,
 				E4A75D3624E77487007095D7 /* Extensions.swift in Sources */,
 				E404568B24E9FEB000EC3356 /* User.swift in Sources */,

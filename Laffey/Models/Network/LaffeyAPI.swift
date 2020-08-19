@@ -18,6 +18,7 @@ enum LaffeyAPI {
     case getRecords(updatedSince: String = "", type: String = "personal")
     case addRecord(recordForm: RecordForm)
     case linkToken(token: String)
+    case getMembers
 }
 
 extension LaffeyAPI: TargetType {
@@ -36,21 +37,28 @@ extension LaffeyAPI: TargetType {
             return "/v1/record/add_record"
         case .linkToken:
             return "/v1/push/link_token"
+        case .getMembers:
+            return "/v1/group/get_members"
         }
     }
     var method: Moya.Method {
         switch self {
         case .register, .login, .requestOTP, .addRecord, .linkToken:
             return .post
-        case .getRecords:
+        case .getRecords, .getMembers:
             return .get
         }
     }
     var task: Task {
         switch self {
         case let .login(loginForm):
-            return .requestParameters(parameters: ["username": loginForm.username,
-                                                   "password": loginForm.password], encoding: JSONEncoding.default)
+            var form = ["password": loginForm.password]
+            if !loginForm.username.isValidEmail() {
+                form["username"] = loginForm.username
+            } else{
+                form["email"] = loginForm.username
+            }
+            return .requestParameters(parameters: form, encoding: JSONEncoding.default)
         case let .register(regForm):
             return .requestParameters(parameters: ["username": regForm.username,
                                                    "password": regForm.password,
@@ -76,6 +84,8 @@ extension LaffeyAPI: TargetType {
                 "token": token,
                 "platform": "ios"
             ], encoding: JSONEncoding.default)
+        case let .getMembers:
+            return .requestPlain
         }
     }
     var sampleData: Data {

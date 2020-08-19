@@ -2,7 +2,7 @@
 //  BossHealth.swift
 //  Laffey
 //
-//  Created by 戴元平 on 8/16/20.
+//  Created by DDavid on 8/16/20.
 //  Copyright © 2020 Wei Dai. All rights reserved.
 //
 

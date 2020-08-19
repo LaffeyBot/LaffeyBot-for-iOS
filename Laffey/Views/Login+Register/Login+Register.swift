@@ -182,12 +182,13 @@ struct LoginAndRegister: View {
                 
                 
                 if let json = try? JSONDecoder().decode(RegisterResponse.self, from: moyaResponse.data) {
-                    var pref = Preferences()
+                    let pref = Preferences()
                     pref.authToken = json.jwt
                     pref.username = self.regForm.username
                     pref.password = self.regForm.password
                     pref.userID = json.id
                     pref.didLogin = true
+                    pref.email = self.regForm.email
                     self.shared.didlogin = true
                 }
                 // do something with the response data or statusCode

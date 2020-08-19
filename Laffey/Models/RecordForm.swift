@@ -13,6 +13,7 @@ class RecordForm {
     var type_index: Int = 0
     var boss_gen: String = "1"
     var boss_order: Int = 1
+    var user: User = Preferences().myself
     var type: String {
         get {
             switch type_index {

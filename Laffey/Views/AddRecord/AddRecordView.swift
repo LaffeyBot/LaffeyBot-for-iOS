@@ -76,6 +76,10 @@ struct AddRecordView: View {
                     
                 }
                 .padding(.horizontal, 30)
+                
+                HStack {
+                    Text("出刀玩家：")
+                }
             }
             
             HStack {

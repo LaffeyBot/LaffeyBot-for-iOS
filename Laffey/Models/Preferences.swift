@@ -11,6 +11,18 @@ import Foundation
 fileprivate let userDefaults = UserDefaults(suiteName: "group.works.dd.Laffey")!
 
 public class Preferences {
+    public var myself: User {
+        get {
+            return User(id: self.userID, group_id: self.groupID, role: self.role, username: self.username, nickname: self.nickname)
+        }
+        set(value) {
+            self.userID = value.id
+            self.groupID = value.group_id ?? 0
+            self.role = value.role
+            self.username = value.username
+        }
+    }
+    
     public var username: String {
         get {
             return userDefaults.string(forKey: "username" ) ?? ""
@@ -20,12 +32,30 @@ public class Preferences {
         }
     }
     
+    public var email: String {
+        get {
+            return userDefaults.string(forKey: "email" ) ?? ""
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "email" )
+        }
+    }
+    
     public var password: String {
         get {
             return userDefaults.string(forKey: "password" ) ?? ""
         }
         set(value) {
             userDefaults.set(value, forKey: "password" )
+        }
+    }
+    
+    public var nickname: String {
+        get {
+            return userDefaults.string(forKey: "nickname" ) ?? ""
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "nickname" )
         }
     }
     
@@ -44,6 +74,24 @@ public class Preferences {
         }
         set(value) {
             userDefaults.set(value, forKey: "personalRecordLastUpdated" )
+        }
+    }
+    
+    public var groupID: Int {  // Defaults to 0
+        get {
+            return userDefaults.integer(forKey: "groupID" )
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "groupID" )
+        }
+    }
+    
+    public var role: Int {
+        get {
+            return userDefaults.integer(forKey: "role" )
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "role" )
         }
     }
     

@@ -13,18 +13,30 @@ struct MemberSelector: View {
     @Binding var selectedMemeber: User
     @Binding var doShowMemberSelector: Bool
     var body: some View {
-        List {
-            ForEach(memberList, id: \.id) { member in
-                Button(action: {
-                    selectedMemeber = member
-                    doShowMemberSelector = false
-                }, label: {
-                    Text(member.nickname)
-                })
-                .foregroundColor(.black)
-                
+        NavigationView {
+            List {
+                ForEach(memberList, id: \.id) { member in
+                    Button(action: {
+                        selectedMemeber = member
+                        doShowMemberSelector = false
+                    }, label: {
+                        Text(member.nickname)
+                    })
+                    .foregroundColor(.black)
+                    
+                }
             }
+            .navigationBarTitle(Text("选择成员"))
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.doShowMemberSelector = false
+                }, label: {
+                    Text("取消")
+                        .foregroundColor(.salmon)
+                })
+            )
         }
+        
         .onAppear() {
             getData()
         }
@@ -34,7 +46,9 @@ struct MemberSelector: View {
         FetchData().getCurrentMembers { (response) in
             switch response {
             case let .success(data):
-                self.memberList = data
+                withAnimation {
+                    self.memberList = data
+                }
             case .error(_):
                 break
             }

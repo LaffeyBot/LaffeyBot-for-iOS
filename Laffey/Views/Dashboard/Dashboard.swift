@@ -28,6 +28,9 @@ struct Dashboard: View {
                 Spacer()
                 Text("当前攻略")
                     .font(.largeTitle)
+                    .sheet(isPresented: $doPresentPNPrompt, content: {
+                        PNPromptView(doPresentPNPrompt: $doPresentPNPrompt)
+                    })
                 
                 VStack {
                     HStack {
@@ -89,9 +92,6 @@ struct Dashboard: View {
         .onReceive(timer) { _ in
             self.fetchAllRecords()
         }
-        .sheet(isPresented: $doPresentPNPrompt, content: {
-            PNPromptView(doPresentPNPrompt: $doPresentPNPrompt)
-        })
     }
     
     func fetchAllRecords() {

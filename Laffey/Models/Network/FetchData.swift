@@ -84,6 +84,7 @@ struct FetchData {
         provider.request(.getMembers) { result in
             switch result {
             case let .success(response):
+                print(String(data: response.data, encoding: .utf8))
                 if let json = try? JSONDecoder().decode(GetMemberResponse.self, from: response.data) {
                     completion(.success(data: json.data))
                 }

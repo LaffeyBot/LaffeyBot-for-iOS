@@ -11,5 +11,5 @@ import Foundation
 struct LoginResponse: Codable {
     let msg: String
     let jwt: String
-    let id: Int
+    let user: User
 }

@@ -15,6 +15,7 @@ struct LoginAndRegister: View {
     @State var doShowError = false
     @State var errorMessage = ""
     @EnvironmentObject var shared: Shared
+    @State var isSubmitting = false
     
     static let OTP_REQUEST_INTERVAL = 20
     @State private var timeRemaining = LoginAndRegister.OTP_REQUEST_INTERVAL
@@ -99,8 +100,13 @@ struct LoginAndRegister: View {
                     Button(action: {
                         self.isRegistration ? self.doRegister() : self.doLogin()
                     }) {
-                        Text(isRegistration ? "注册" : "登录")
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                        if !isSubmitting {
+                            Text(isRegistration ? "注册" : "登录")
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                        } else {
+                            ActivityIndicatorView(isAnimating: .constant(true), style: .medium, color: UIColor.white)
+                        }
+                        
                     }
                     .font(.headline)
                     .background(Color.salmon)
@@ -140,18 +146,24 @@ struct LoginAndRegister: View {
                 let decoder = JSONDecoder()
                 if let json = try? decoder.decode(LoginResponse.self, from: moyaResponse.data) {
                     // 登录成功
-                    let pref = Preferences()
-                    pref.authToken = json.jwt
-                    pref.username = self.regForm.username
-                    pref.password = self.regForm.password
-                    pref.userID = json.id
-                    pref.didLogin = true
+                    self.addDataToPreferences(response: json)
                     self.shared.didlogin = true
                 }
             case let .failure(error):
                 self.displayAlert(message: "错误：" + error.localizedDescription)
             }
         }
+    }
+    
+    func addDataToPreferences(response: LoginResponse) {
+        let pref = Preferences()
+        pref.authToken = response.jwt
+        pref.myself = User(id: response.user.id,
+                           group_id: response.user.group_id,
+                           role: response.user.role,
+                           username: response.user.username,
+                           nickname: response.user.nickname)
+        pref.didLogin = true
     }
     
     func doRegister() {
@@ -181,14 +193,8 @@ struct LoginAndRegister: View {
                 }
                 
                 
-                if let json = try? JSONDecoder().decode(RegisterResponse.self, from: moyaResponse.data) {
-                    let pref = Preferences()
-                    pref.authToken = json.jwt
-                    pref.username = self.regForm.username
-                    pref.password = self.regForm.password
-                    pref.userID = json.id
-                    pref.didLogin = true
-                    pref.email = self.regForm.email
+                if let json = try? JSONDecoder().decode(LoginResponse.self, from: moyaResponse.data) {
+                    self.addDataToPreferences(response: json)
                     self.shared.didlogin = true
                 }
                 // do something with the response data or statusCode

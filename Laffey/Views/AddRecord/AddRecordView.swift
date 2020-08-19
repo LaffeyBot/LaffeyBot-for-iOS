@@ -15,6 +15,8 @@ struct AddRecordView: View {
     @State var isShowingMore: Bool = false
     @Binding var isAddingRecord: Bool
     @ObservedObject var currentRecord: TeamRecordNative
+    @State var doShowMemberSelector: Bool = false
+    @State var isSubmitting: Bool = false
     
     var body: some View {
         VStack(spacing: 30) {
@@ -79,15 +81,35 @@ struct AddRecordView: View {
                 
                 HStack {
                     Text("出刀玩家：")
+                    .padding(.leading, 30)
+                    Text(recordForm.user.nickname)
+                    Spacer()
+                    Button(action: {
+                        self.doShowMemberSelector.toggle()
+                    }, label: {
+                        Text("修改")
+                    })
+                    .foregroundColor(.salmon)
+                    .padding(.horizontal, 30)
+                    .sheet(isPresented: $doShowMemberSelector) {
+                        MemberSelector(selectedMemeber: $recordForm.user, doShowMemberSelector: self.$doShowMemberSelector)
+                    }
                 }
             }
             
             HStack {
                 Button(action: {
+                    self.isSubmitting = true
                     self.submitRecord()
                 }) {
-                    Text("提交")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    if !isSubmitting {
+                        Text("提交")
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    } else {
+                        ActivityIndicatorView(isAnimating: .constant(true), style: .medium, color: UIColor.white)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    }
+                    
                 }
                 .font(.headline)
                 .background(Color.salmon)
@@ -139,10 +161,9 @@ struct AddRecordView: View {
                         realm.addRecord(record: recordToAdd)
                         
                         DispatchQueue.main.async {
-//                            withAnimation {
-                                self.currentRecord.update(teamRecord: recordToAdd)
-                                self.isAddingRecord = false
-//                            }
+                            self.currentRecord.update(teamRecord: recordToAdd)
+                            self.isAddingRecord = false
+                            self.isSubmitting = false
                         }
                     }
                 }

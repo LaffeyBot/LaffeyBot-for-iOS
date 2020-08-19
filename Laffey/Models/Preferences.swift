@@ -20,6 +20,7 @@ public class Preferences {
             self.groupID = value.group_id ?? 0
             self.role = value.role
             self.username = value.username
+            self.nickname = value.nickname
         }
     }
     

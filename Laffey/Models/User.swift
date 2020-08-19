@@ -9,11 +9,13 @@
 import SwiftUI
 
 public class User: Codable, Identifiable {
-    var id: Int
+    public var id: Int
     var group_id: Int?
     var role: Int
     var username: String
     var nickname: String
+    var email: String?
+    var qq: String?
     
     init(id: Int, group_id: Int?, role: Int, username: String,
          nickname: String) {

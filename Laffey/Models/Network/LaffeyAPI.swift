@@ -77,14 +77,15 @@ extension LaffeyAPI: TargetType {
                 "damage": Int(recordForm.damage) ?? 0,
                 "type": recordForm.type,
                 "boss_gen": Int(recordForm.boss_gen) ?? 0,
-                "boss_order": recordForm.boss_order + 1
+                "boss_order": recordForm.boss_order + 1,
+                "user_id": recordForm.user.id
             ], encoding: JSONEncoding.default)
         case let .linkToken(token):
             return .requestParameters(parameters: [
                 "token": token,
                 "platform": "ios"
             ], encoding: JSONEncoding.default)
-        case let .getMembers:
+        case .getMembers:
             return .requestPlain
         }
     }
@@ -94,7 +95,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord, .linkToken:
+        case .getRecords, .addRecord, .linkToken, .getMembers:
             header["auth"] = Preferences().authToken
         default:
             break

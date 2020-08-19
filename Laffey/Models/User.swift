@@ -15,7 +15,7 @@ public class User: Codable, Identifiable, Equatable {
     var username: String
     var nickname: String
     var email: String?
-    var qq: String?
+    var qq: Int?
     
     init(id: Int, group_id: Int?, role: Int, username: String,
          nickname: String) {

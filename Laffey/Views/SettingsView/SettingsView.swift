@@ -9,40 +9,28 @@
 import SwiftUI
 
 struct SettingsView: View {
-    var email: String = Preferences().username
-    @State var memberToBeKicked: User = Preferences().myself
-    @State var doShowMemberSelector: Bool = false
+    var me: User = Preferences().myself
     var body: some View {
         NavigationView {
                 List {
                     Section(header: Text("关于我")) {
                         AboutMeRow()
+                        AboutMeRow()
                     }
                     
                     Section(header: Text("关于公会")) {
-                        Button(action: {
-                            self.doShowMemberSelector.toggle()
-                        }, label: {
-                            Text("踢出成员")
-                        })
-                        .foregroundColor(.black)
-                        .sheet(isPresented: $doShowMemberSelector, onDismiss: {
-                            if memberToBeKicked != Preferences().myself {
-                                self.kickMember()
-                            }
-                        }, content: {
-                            MemberSelector(selectedMemeber: $memberToBeKicked, doShowMemberSelector: $doShowMemberSelector)
-                        })
+                        if me.role == 2 {
+                            KickMemberRow()
+                        }
                         
+                    }
+                    
+                    Section {
                     }
                 }
                 .listStyle(GroupedListStyle())
                 .navigationBarTitle(Text("设定"))
         }
-    }
-    
-    func kickMember() {
-        
     }
 }
 

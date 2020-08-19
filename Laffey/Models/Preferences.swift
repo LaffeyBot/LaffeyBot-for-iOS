@@ -21,6 +21,7 @@ public class Preferences {
             self.role = value.role
             self.username = value.username
             self.nickname = value.nickname
+            self.qq = value.qq ?? 0
         }
     }
     
@@ -75,6 +76,15 @@ public class Preferences {
         }
         set(value) {
             userDefaults.set(value, forKey: "personalRecordLastUpdated" )
+        }
+    }
+    
+    public var qq: Int {
+        get {
+            return userDefaults.integer(forKey: "qq" )
+        }
+        set(value) {
+            userDefaults.set(value, forKey: "qq" )
         }
     }
     

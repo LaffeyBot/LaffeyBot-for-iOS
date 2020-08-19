@@ -17,6 +17,8 @@
 		E404569B24EA127D00EC3356 /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404569A24EA127D00EC3356 /* RecordListView.swift */; };
 		E416360A24EBB9FA009B624E /* GetMemberResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416360924EBB9FA009B624E /* GetMemberResponse.swift */; };
 		E416360C24ECC3A5009B624E /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416360B24ECC3A5009B624E /* ActivityIndicatorView.swift */; };
+		E416361124ECD9D5009B624E /* KickMemberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416361024ECD9D5009B624E /* KickMemberRow.swift */; };
+		E416361324ECDC40009B624E /* LogoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416361224ECDC40009B624E /* LogoutRow.swift */; };
 		E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9D924E8F179008145F8 /* TeamRecord.swift */; };
 		E419D9E124E90939008145F8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419D9E024E90939008145F8 /* ProgressBar.swift */; };
 		E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC76224E6681C00F548F1 /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		E404569A24EA127D00EC3356 /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
 		E416360924EBB9FA009B624E /* GetMemberResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMemberResponse.swift; sourceTree = "<group>"; };
 		E416360B24ECC3A5009B624E /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		E416361024ECD9D5009B624E /* KickMemberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickMemberRow.swift; sourceTree = "<group>"; };
+		E416361224ECDC40009B624E /* LogoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRow.swift; sourceTree = "<group>"; };
 		E419D9D924E8F179008145F8 /* TeamRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRecord.swift; sourceTree = "<group>"; };
 		E419D9E024E90939008145F8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E43AC75F24E6681C00F548F1 /* Laffey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Laffey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,6 +346,8 @@
 			children = (
 				E4B84B0224EBAEE900D11BFD /* SettingsView.swift */,
 				E4B84B0424EBAF4D00D11BFD /* AboutMeRow.swift */,
+				E416361024ECD9D5009B624E /* KickMemberRow.swift */,
+				E416361224ECDC40009B624E /* LogoutRow.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E416361124ECD9D5009B624E /* KickMemberRow.swift in Sources */,
 				E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */,
 				E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */,
 				E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */,
@@ -521,6 +528,7 @@
 				E4B84B0324EBAEE900D11BFD /* SettingsView.swift in Sources */,
 				E43AC76A24E6681C00F548F1 /* TabView.swift in Sources */,
 				E43AC76524E6681C00F548F1 /* SceneDelegate.swift in Sources */,
+				E416361324ECDC40009B624E /* LogoutRow.swift in Sources */,
 				E4B84B0724EBB39000D11BFD /* CheckEmail.swift in Sources */,
 				E404568E24EA070600EC3356 /* FetchData.swift in Sources */,
 				E4A75D3624E77487007095D7 /* Extensions.swift in Sources */,

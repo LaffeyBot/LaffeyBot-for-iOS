@@ -18,7 +18,9 @@ enum LaffeyAPI {
     case getRecords(updatedSince: String = "", type: String = "personal")
     case addRecord(recordForm: RecordForm)
     case linkToken(token: String)
+    case unlinkToken(token: String)
     case getMembers
+    case kickMember(user: User)
 }
 
 extension LaffeyAPI: TargetType {
@@ -37,16 +39,22 @@ extension LaffeyAPI: TargetType {
             return "/v1/record/add_record"
         case .linkToken:
             return "/v1/push/link_token"
+        case .unlinkToken:
+            return "/v1/push/unlink_token"
         case .getMembers:
             return "/v1/group/get_members"
+        case .kickMember:
+            return "/v1/group/kick_member"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .register, .login, .requestOTP, .addRecord, .linkToken:
+        case .register, .login, .requestOTP, .addRecord, .linkToken, .unlinkToken:
             return .post
         case .getRecords, .getMembers:
             return .get
+        case .kickMember:
+            return .delete
         }
     }
     var task: Task {
@@ -85,8 +93,15 @@ extension LaffeyAPI: TargetType {
                 "token": token,
                 "platform": "ios"
             ], encoding: JSONEncoding.default)
+        case let .unlinkToken(token):
+            return .requestParameters(parameters: [
+                "token": token,
+                "platform": "ios"
+            ], encoding: JSONEncoding.default)
         case .getMembers:
             return .requestPlain
+        case let .kickMember(user):
+            return .requestParameters(parameters: ["id": user.id], encoding: JSONEncoding.default)
         }
     }
     var sampleData: Data {
@@ -95,7 +110,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord, .linkToken, .getMembers:
+        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken:
             header["auth"] = Preferences().authToken
         default:
             break

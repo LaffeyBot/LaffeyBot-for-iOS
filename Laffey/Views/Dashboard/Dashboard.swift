@@ -87,6 +87,9 @@ struct Dashboard: View {
         }
         .onAppear() {
             print("DASHBOARD IS VISIBLE")
+            if Preferences().didEnablePN {
+                XGPush.defaultManager().setBadge(0)
+            }
             self.fetchAllRecords()
         }
         .onReceive(timer) { _ in

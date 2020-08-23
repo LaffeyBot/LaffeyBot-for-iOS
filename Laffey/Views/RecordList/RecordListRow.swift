@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct RecordListRow: View {
     var record: PersonalRecord
     let userID = Preferences().userID
+    @State var alert = Alert(title: Text(""))
+    @State var doShowAlert = false
     
     var body: some View {
         HStack {
@@ -35,6 +38,9 @@ struct RecordListRow: View {
                 }
             }
             .frame(alignment: .leading)
+            .alert(isPresented: $doShowAlert, content: {
+                alert
+            })
             
             Spacer()
             
@@ -70,6 +76,32 @@ struct RecordListRow: View {
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+    }
+    
+    func deleteRecord() {
+        provider.request(.deleteRecord(id: Int(record.id))) { result in
+            switch result {
+            case let .failure(error):
+                self.showMessage(title: "错误", message: error.localizedDescription)
+            case let .success(response):
+                if response.statusCode == 200 {
+                    self.showMessage(title: "成功", message: "已删除本记录")
+                    let realm = try! Realm()
+                    let self_record = realm.objects(PersonalRecord.self)
+                        .filter("id = \(String(record.id))}")
+                    try! realm.write {
+                        realm.delete(self_record)
+                    }
+                } else {
+                    self.showMessage(title: "错误", message: "未知错误")
+                }
+            }
+        }
+    }
+    
+    func showMessage(title: String, message: String) {
+        alert = Alert(title: Text(title), message: Text(message))
+        self.doShowAlert = true
     }
     
     func modifyRecord() {

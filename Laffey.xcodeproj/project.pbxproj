@@ -32,6 +32,7 @@
 		E43AC78A24E7566A00F548F1 /* Login+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* Login+Register.swift */; };
 		E487922324F0AF9B0034C2CC /* LinkQQAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */; };
 		E487922724F252D70034C2CC /* TeamRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922624F252D70034C2CC /* TeamRank.swift */; };
+		E487922924F273980034C2CC /* GetCurrentStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922824F273980034C2CC /* GetCurrentStatusResponse.swift */; };
 		E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */; };
 		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
 		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
@@ -94,6 +95,7 @@
 		E43AC78924E7566A00F548F1 /* Login+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Register.swift"; sourceTree = "<group>"; };
 		E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkQQAccount.swift; sourceTree = "<group>"; };
 		E487922624F252D70034C2CC /* TeamRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRank.swift; sourceTree = "<group>"; };
+		E487922824F273980034C2CC /* GetCurrentStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentStatusResponse.swift; sourceTree = "<group>"; };
 		E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListRow.swift; sourceTree = "<group>"; };
 		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				E4A75D3C24E7A819007095D7 /* LoginResponse.swift */,
 				E416360924EBB9FA009B624E /* GetMemberResponse.swift */,
+				E487922824F273980034C2CC /* GetCurrentStatusResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				E416361524ECE31E009B624E /* DashboardStatsView.swift in Sources */,
 				E487922724F252D70034C2CC /* TeamRank.swift in Sources */,
 				E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */,
+				E487922924F273980034C2CC /* GetCurrentStatusResponse.swift in Sources */,
 				E404569024EA08D400EC3356 /* PersonalRecord.swift in Sources */,
 				E4B84B0B24EBB7FE00D11BFD /* MemberSelector.swift in Sources */,
 				E43AC76324E6681C00F548F1 /* AppDelegate.swift in Sources */,

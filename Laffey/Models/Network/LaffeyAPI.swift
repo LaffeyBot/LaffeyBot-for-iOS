@@ -16,12 +16,14 @@ enum LaffeyAPI {
     case login(loginForm: RegistrationForm)
     case requestOTP(email: String, for: String)
     case getRecords(updatedSince: String = "", type: String = "personal")
+    case modifyRecord(record: RecordForm)
     case addRecord(recordForm: RecordForm)
     case linkToken(token: String)
     case unlinkToken(token: String)
     case getMembers
     case kickMember(user: User)
     case deleteRecord(id: Int)
+    case getCurrentBossStatus
 }
 
 extension LaffeyAPI: TargetType {
@@ -48,13 +50,17 @@ extension LaffeyAPI: TargetType {
             return "/v1/group/kick_member"
         case .deleteRecord:
             return "/v1/record/delete_record"
+        case .getCurrentBossStatus:
+            return "/v1/record/get_current_team_record"
+        case .modifyRecord:
+            return "/v1/record/modify_record"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .register, .login, .requestOTP, .addRecord, .linkToken, .unlinkToken:
+        case .register, .login, .requestOTP, .addRecord, .linkToken, .unlinkToken, .modifyRecord:
             return .post
-        case .getRecords, .getMembers:
+        case .getRecords, .getMembers, .getCurrentBossStatus:
             return .get
         case .kickMember, .deleteRecord:
             return .delete
@@ -108,6 +114,16 @@ extension LaffeyAPI: TargetType {
             return .requestParameters(parameters: ["id": user.id], encoding: JSONEncoding.default)
         case let .deleteRecord(id):
             return .requestParameters(parameters: ["id": id], encoding: JSONEncoding.default)
+        case .getCurrentBossStatus:
+            return .requestPlain
+        case let .modifyRecord(record):
+            return .requestParameters(parameters: [
+                "id": record.id ?? 0,
+                "damage": record.damage,
+                "type_": record.type,
+                "boss_gen": record.boss_gen,
+                "boss_order": record.boss_order
+            ], encoding: JSONEncoding.default)
         }
     }
     var sampleData: Data {
@@ -116,7 +132,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken, .deleteRecord:
+        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken, .deleteRecord, .getCurrentBossStatus:
             header["auth"] = Preferences().authToken
         default:
             break

@@ -101,7 +101,7 @@ struct Dashboard: View {
     
     func fetchAllRecords() {
         self.isFetching = true
-        FetchData().fetchAllTeamRecords { (response) in
+        FetchData().fetchCurrentBossStatus { (response) in
             switch response {
             case .success:
                 DispatchQueue.main.async {
@@ -110,9 +110,6 @@ struct Dashboard: View {
                 }
             case let .error(error):
                 self.displayError(message: error.localizedDescription)
-            case .noUpdate:
-                self.hasError = false
-                break
             }
             self.isFetching = false
         }

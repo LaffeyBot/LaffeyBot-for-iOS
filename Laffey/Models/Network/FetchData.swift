@@ -22,7 +22,34 @@ enum GetMembersResponseType {
     case error(error: Error)
 }
 
+enum GetBossStatusResponseType {
+    case success(data: TeamRecord)
+    case error(error: Error)
+}
+
 struct FetchData {
+    func fetchCurrentBossStatus(completion: @escaping (GetBossStatusResponseType) -> Void) {
+        provider.request(.getCurrentBossStatus) { (result) in
+            switch result {
+            case let .success(response):
+                guard let json = try? JSONDecoder().decode(GetCurrentStatusResponse.self, from: response.data) else {
+                    print(String(data: response.data, encoding: .utf8) ?? "")
+                    return
+                }
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.delete(realm.objects(TeamRecord.self))
+                    realm.add(json.data)
+                }
+                
+                completion(.success(data: json.data))
+            case let .failure(error):
+                completion(.error(error: error))
+            }
+        }
+    }
+    
     func fetchAllTeamRecords(completion: @escaping (FetchDataResponseType) -> Void) {
         provider.request(.getRecords(updatedSince: "0", type: "team")) { (result) in
             switch result {

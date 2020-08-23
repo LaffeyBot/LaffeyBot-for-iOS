@@ -9,6 +9,7 @@
 import Foundation
 
 class RecordForm {
+    var id: Int?
     var damage: String = "0"
     var type_index: Int = 0
     var boss_gen: String = "1"

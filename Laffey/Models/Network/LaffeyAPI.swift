@@ -21,6 +21,7 @@ enum LaffeyAPI {
     case unlinkToken(token: String)
     case getMembers
     case kickMember(user: User)
+    case deleteRecord(id: Int)
 }
 
 extension LaffeyAPI: TargetType {
@@ -45,6 +46,8 @@ extension LaffeyAPI: TargetType {
             return "/v1/group/get_members"
         case .kickMember:
             return "/v1/group/kick_member"
+        case .deleteRecord:
+            return "/v1/record/delete_record"
         }
     }
     var method: Moya.Method {
@@ -53,7 +56,7 @@ extension LaffeyAPI: TargetType {
             return .post
         case .getRecords, .getMembers:
             return .get
-        case .kickMember:
+        case .kickMember, .deleteRecord:
             return .delete
         }
     }
@@ -86,7 +89,8 @@ extension LaffeyAPI: TargetType {
                 "type": recordForm.type,
                 "boss_gen": Int(recordForm.boss_gen) ?? 0,
                 "boss_order": recordForm.boss_order + 1,
-                "user_id": recordForm.user.id
+                "user_id": recordForm.user.id,
+                "origin": "iOS App"
             ], encoding: JSONEncoding.default)
         case let .linkToken(token):
             return .requestParameters(parameters: [
@@ -102,6 +106,8 @@ extension LaffeyAPI: TargetType {
             return .requestPlain
         case let .kickMember(user):
             return .requestParameters(parameters: ["id": user.id], encoding: JSONEncoding.default)
+        case let .deleteRecord(id):
+            return .requestParameters(parameters: ["id": id], encoding: JSONEncoding.default)
         }
     }
     var sampleData: Data {
@@ -110,7 +116,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken:
+        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken, .deleteRecord:
             header["auth"] = Preferences().authToken
         default:
             break

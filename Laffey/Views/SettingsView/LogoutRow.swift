@@ -19,6 +19,7 @@ struct LogoutRow: View {
         }, label: {
             Text("退出登录")
         })
+        .foregroundColor(.red)
         .alert(isPresented: $doShowAlert, content: {
             Alert(title: Text("确定要退出登录吗？"),
                   message: Text("退出登录之后, 所有记录都会被清除。"),
@@ -33,6 +34,7 @@ struct LogoutRow: View {
         DispatchQueue.main.async {
             Preferences().myself = User(id: 0, group_id: nil, role: 0, username: "", nickname: "")
             Preferences().didLogin = false
+            Preferences().personalRecordLastUpdated = 0
             
             if Preferences().didEnablePN {
                 provider.request(.unlinkToken(token: XGPushTokenManager.default().deviceTokenString ?? "")) { _ in

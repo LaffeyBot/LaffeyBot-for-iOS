@@ -30,6 +30,8 @@
 		E43AC76F24E6681E00F548F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43AC76E24E6681E00F548F1 /* Preview Assets.xcassets */; };
 		E43AC77224E6681E00F548F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43AC77024E6681E00F548F1 /* LaunchScreen.storyboard */; };
 		E43AC78A24E7566A00F548F1 /* Login+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43AC78924E7566A00F548F1 /* Login+Register.swift */; };
+		E487922324F0AF9B0034C2CC /* LinkQQAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */; };
+		E487922724F252D70034C2CC /* TeamRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922624F252D70034C2CC /* TeamRank.swift */; };
 		E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */; };
 		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
 		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
@@ -90,6 +92,8 @@
 		E43AC77124E6681E00F548F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E43AC77324E6681E00F548F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43AC78924E7566A00F548F1 /* Login+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Register.swift"; sourceTree = "<group>"; };
+		E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkQQAccount.swift; sourceTree = "<group>"; };
+		E487922624F252D70034C2CC /* TeamRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRank.swift; sourceTree = "<group>"; };
 		E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListRow.swift; sourceTree = "<group>"; };
 		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				E43AC78924E7566A00F548F1 /* Login+Register.swift */,
+				E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */,
 			);
 			path = "Login+Register";
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				E419D9D924E8F179008145F8 /* TeamRecord.swift */,
 				E404568824E9FCC300EC3356 /* RealmDatabase.swift */,
 				E404568F24EA08D400EC3356 /* PersonalRecord.swift */,
+				E487922624F252D70034C2CC /* TeamRank.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				E4D2540A24E90BC50049A11C /* BossHealth.swift in Sources */,
 				E4BB85CE24E7BA7400DF40BC /* Shared.swift in Sources */,
 				E416361524ECE31E009B624E /* DashboardStatsView.swift in Sources */,
+				E487922724F252D70034C2CC /* TeamRank.swift in Sources */,
 				E419D9DA24E8F179008145F8 /* TeamRecord.swift in Sources */,
 				E404569024EA08D400EC3356 /* PersonalRecord.swift in Sources */,
 				E4B84B0B24EBB7FE00D11BFD /* MemberSelector.swift in Sources */,
@@ -522,6 +529,7 @@
 				E4A75D3F24E7ACBE007095D7 /* Preferences.swift in Sources */,
 				E4A75D3D24E7A819007095D7 /* LoginResponse.swift in Sources */,
 				E416360C24ECC3A5009B624E /* ActivityIndicatorView.swift in Sources */,
+				E487922324F0AF9B0034C2CC /* LinkQQAccount.swift in Sources */,
 				E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */,
 				E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */,
 				E4B84AED24EA70A800D11BFD /* PNPromptView.swift in Sources */,

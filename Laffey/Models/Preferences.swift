@@ -124,6 +124,15 @@ public class Preferences {
         }
     }
     
+    public var didJoinGroup: Bool {
+        get {
+            return userDefaults.bool(forKey: "didJoinGroup" )
+        }
+        set (value) {
+            userDefaults.set(value, forKey: "didJoinGroup" )
+        }
+    }
+    
     public var didEnablePN: Bool {
         get {
             return userDefaults.bool(forKey: "didEnablePN" )

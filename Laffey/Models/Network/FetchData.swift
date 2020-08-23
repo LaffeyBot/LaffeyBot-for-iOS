@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
+
 
 enum FetchDataResponseType {
     case success
@@ -25,7 +27,6 @@ struct FetchData {
         provider.request(.getRecords(updatedSince: "0", type: "team")) { (result) in
             switch result {
             case let .success(response):
-                print(String(data: response.data, encoding: .utf8))
                 guard let json = try? JSON(data: response.data) else {
                     print(String(data: response.data, encoding: .utf8) ?? "")
                     return
@@ -33,7 +34,10 @@ struct FetchData {
                 
                 let realm = RealmDatabase()
                 for record in json["data"].arrayValue {
-                    if let dictRow = record.dictionaryObject {
+                    if var dictRow = record.dictionaryObject {
+                        if dictRow["record"] as? NSNull == NSNull() || dictRow["record"] == nil {
+                            dictRow["record"] = 0
+                        }
                         realm.addRecord(record: TeamRecord(value: dictRow))
                     }
                 }
@@ -62,7 +66,7 @@ struct FetchData {
                 }
                 
                 if let timestamp = json["time"].int {
-                    var pref = Preferences()
+                    let pref = Preferences()
                     pref.personalRecordLastUpdated = timestamp
                 }
                 
@@ -73,9 +77,35 @@ struct FetchData {
                     }
                 }
                 
+                self.deleteAllRecordsMatching(deleteds: json["deleted"].arrayValue)
+                
                 completion(.success)
             case let .failure(error):
                 completion(.error(error: error))
+            }
+        }
+    }
+    
+    func deleteAllRecordsMatching(deleteds: [JSON]) {
+        let realm = try! Realm()
+        for deleted in deleteds {
+            guard let dictRow = deleted.dictionaryObject else {
+                continue
+            }
+            
+            let table = dictRow["from_table"] as? String ?? ""
+            guard let deleted_id = dictRow["deleted_id"] as? Int else {
+                continue
+            }
+            
+            var objectToBeDeleted: Object? = nil
+            if table == "PersonalRecord" {
+                objectToBeDeleted = realm.objects(PersonalRecord.self).filter("id = \(deleted_id)").first
+            } else if table == "TeamRank" {
+                objectToBeDeleted = realm.objects(TeamRank.self).filter("id = \(deleted_id)").first
+            }
+            if objectToBeDeleted != nil {
+                realm.delete(objectToBeDeleted!)
             }
         }
     }

@@ -20,7 +20,16 @@ struct MemberSelector: View {
                         selectedMemeber = member
                         doShowMemberSelector = false
                     }, label: {
-                        Text(member.nickname)
+                        HStack {
+                            Text(member.nickname)
+                            Spacer()
+                            if member.role == 2 {
+                                Text("会长")
+                            } else if member.role == 1 {
+                                Text("管理员")
+                            }
+                        }
+                        
                     })
                     .foregroundColor(.black)
                     

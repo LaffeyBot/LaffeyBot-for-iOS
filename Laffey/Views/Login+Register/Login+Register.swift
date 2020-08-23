@@ -174,6 +174,7 @@ struct LoginAndRegister: View {
                            role: response.user.role,
                            username: response.user.username,
                            nickname: response.user.nickname)
+        pref.password = regForm.password
         pref.didLogin = true
     }
     

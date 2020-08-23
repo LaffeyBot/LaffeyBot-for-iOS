@@ -152,11 +152,12 @@ struct AddRecordView: View {
         provider.request(.addRecord(recordForm: recordForm)) { result in
             switch result {
             case let .success(response):
-                print(String(data: response.request?.httpBody ?? Data(), encoding: .utf8))
-                print(String(data: response.data, encoding: .utf8))
                 if let json = try? JSON(data: response.data) {
                     let realm = RealmDatabase()
-                    if let dictRow = json["team_record"].dictionaryObject {
+                    if var dictRow = json["team_record"].dictionaryObject {
+                        if dictRow["record"] as? NSNull == NSNull() || dictRow["record"] == nil {
+                            dictRow["record"] = 0
+                        }
                         let recordToAdd = TeamRecord(value: dictRow)
                         realm.addRecord(record: recordToAdd)
                         

@@ -10,8 +10,10 @@ import SwiftUI
 
 class Shared: ObservableObject {
     @Published var didlogin: Bool
+    @Published var didJoinGroup: Bool
     
     init() {
         didlogin = Preferences().didLogin
+        didJoinGroup = Preferences().didJoinGroup
     }
 }

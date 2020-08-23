@@ -21,6 +21,7 @@ struct RecordListView: View {
                     RecordListRow(record: record)
                         .frame(maxWidth: .infinity)
                         .transition(.opacity)
+                        .buttonStyle(PlainButtonStyle())
                 }
                 .animation(.easeInOut)
             }

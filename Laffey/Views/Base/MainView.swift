@@ -15,6 +15,8 @@ struct MainView: View {
         VStack {
             if !self.shared.didlogin {
                 LoginAndRegister()
+            } else if !self.shared.didJoinGroup {
+                LinkQQAccount()
             } else {
                 ContentView()
             }

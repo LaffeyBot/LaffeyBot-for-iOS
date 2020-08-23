@@ -12,8 +12,6 @@ import RealmSwift
 
 class TeamRecord: Object, Codable {
     @objc dynamic var id: Int32 = 0
-    @objc dynamic var record: Int32 = 0
-    @objc dynamic var detail_date: Int32 = 0
     @objc dynamic var epoch_id: Int32 = 0
     @objc dynamic var group_id: Int32 = 0
     @objc dynamic var current_boss_gen: Int32 = 0
@@ -28,8 +26,6 @@ class TeamRecord: Object, Codable {
 
 class TeamRecordNative: ObservableObject {
     @Published var id: Int32 = 0
-    @Published var record: Int32 = 0
-    @Published var detail_date: Int32 = 0
     @Published var epoch_id: Int32 = 0
     @Published var group_id: Int32 = 0
     @Published var current_boss_gen: Int32 = 0
@@ -41,7 +37,6 @@ class TeamRecordNative: ObservableObject {
     func update(teamRecord: TeamRecord) {
         self.boss_remaining_health = teamRecord.boss_remaining_health
         self.id = teamRecord.id
-        self.detail_date = teamRecord.detail_date
         self.epoch_id = teamRecord.epoch_id
         self.group_id = teamRecord.group_id
         self.current_boss_gen = teamRecord.current_boss_gen

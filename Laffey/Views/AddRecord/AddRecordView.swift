@@ -17,6 +17,7 @@ struct AddRecordView: View {
     @ObservedObject var currentRecord: TeamRecordNative
     @State var doShowMemberSelector: Bool = false
     @State var isSubmitting: Bool = false
+    var isModifying = false
     
     var body: some View {
         VStack(spacing: 30) {
@@ -92,7 +93,7 @@ struct AddRecordView: View {
                     .foregroundColor(.salmon)
                     .padding(.horizontal, 30)
                     .sheet(isPresented: $doShowMemberSelector) {
-                        MemberSelector(selectedMemeber: $recordForm.user, doShowMemberSelector: self.$doShowMemberSelector)
+                        MemberSelector(selectedMemeber: self.$recordForm.user, doShowMemberSelector: self.$doShowMemberSelector)
                     }
                 }
             }
@@ -149,15 +150,14 @@ struct AddRecordView: View {
             self.displayErrorMessage(msg: "boss代数不是整数喵...")
         }
         
-        provider.request(.addRecord(recordForm: recordForm)) { result in
+        provider.request(
+            isModifying ? .modifyRecord(record: recordForm) : .addRecord(recordForm: recordForm)
+        ) { result in
             switch result {
             case let .success(response):
                 if let json = try? JSON(data: response.data) {
                     let realm = RealmDatabase()
-                    if var dictRow = json["team_record"].dictionaryObject {
-                        if dictRow["record"] as? NSNull == NSNull() || dictRow["record"] == nil {
-                            dictRow["record"] = 0
-                        }
+                    if let dictRow = json["team_record"].dictionaryObject {
                         let recordToAdd = TeamRecord(value: dictRow)
                         realm.addRecord(record: recordToAdd)
                         

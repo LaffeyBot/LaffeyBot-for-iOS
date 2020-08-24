@@ -131,8 +131,10 @@ struct FetchData {
             } else if table == "TeamRank" {
                 objectToBeDeleted = realm.objects(TeamRank.self).filter("id = \(deleted_id)").first
             }
-            if objectToBeDeleted != nil {
-                realm.delete(objectToBeDeleted!)
+            if objectToBeDeleted != nil && !objectToBeDeleted!.isInvalidated {
+                try! realm.write {
+                    realm.delete(objectToBeDeleted!)
+                }
             }
         }
     }

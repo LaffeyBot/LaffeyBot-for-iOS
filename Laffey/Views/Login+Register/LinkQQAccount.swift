@@ -62,7 +62,7 @@ struct LinkQQAccount: View {
                     
                     Button(action: {
                         let pasteboard = UIPasteboard.general
-                        pasteboard.string = "绑定账户 " + accountName
+                        pasteboard.string = "绑定账户 " + self.accountName
                     }) {
                         Text("点击复制")
                             .frame(minWidth: 0, maxWidth: 80, minHeight: 30, maxHeight: 40)

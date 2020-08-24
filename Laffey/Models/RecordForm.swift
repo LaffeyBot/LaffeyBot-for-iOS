@@ -35,6 +35,27 @@ class RecordForm {
         self.boss_order = boss_order
     }
     
+    init(record: PersonalRecord) {
+        self.id = Int(record.id)
+        self.damage = String(record.damage)
+        self.boss_gen = String(record.boss_gen)
+        self.boss_order = Int(record.boss_order)
+        self.user = Preferences().myself  // 这个不会被用到
+        var type_index: Int {
+            switch record.type {
+            case "normal":
+                return 0
+            case "last":
+                return 1
+            case "compensation":
+                return 2
+            default:
+                return 0
+            }
+        }
+        self.type_index = type_index
+    }
+    
     init() {
     }
 }

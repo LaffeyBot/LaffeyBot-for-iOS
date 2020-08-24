@@ -24,7 +24,7 @@ struct RealmDatabase {
     
     func getCurrentTeamRecord(current: TeamRecordNative) -> TeamRecordNative {
         let realm = try! Realm()
-        let recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "detail_date", ascending: false)
+        let recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "last_modified", ascending: false)
         if recordList.count > 0 {
             current.update(teamRecord: recordList[0])
             return current

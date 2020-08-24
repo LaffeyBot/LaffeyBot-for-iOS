@@ -33,6 +33,7 @@
 		E487922324F0AF9B0034C2CC /* LinkQQAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */; };
 		E487922724F252D70034C2CC /* TeamRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922624F252D70034C2CC /* TeamRank.swift */; };
 		E487922924F273980034C2CC /* GetCurrentStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922824F273980034C2CC /* GetCurrentStatusResponse.swift */; };
+		E487922B24F34C380034C2CC /* SetAdminRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487922A24F34C380034C2CC /* SetAdminRow.swift */; };
 		E4A1925D24E80DEB0075AA95 /* RecordListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */; };
 		E4A75D3424E76DD0007095D7 /* RegistrationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */; };
 		E4A75D3624E77487007095D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A75D3524E77487007095D7 /* Extensions.swift */; };
@@ -96,6 +97,7 @@
 		E487922224F0AF9B0034C2CC /* LinkQQAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkQQAccount.swift; sourceTree = "<group>"; };
 		E487922624F252D70034C2CC /* TeamRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRank.swift; sourceTree = "<group>"; };
 		E487922824F273980034C2CC /* GetCurrentStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentStatusResponse.swift; sourceTree = "<group>"; };
+		E487922A24F34C380034C2CC /* SetAdminRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAdminRow.swift; sourceTree = "<group>"; };
 		E4A1925C24E80DEB0075AA95 /* RecordListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListRow.swift; sourceTree = "<group>"; };
 		E4A75D3324E76DD0007095D7 /* RegistrationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForm.swift; sourceTree = "<group>"; };
 		E4A75D3524E77487007095D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				E4B84B0424EBAF4D00D11BFD /* AboutMeRow.swift */,
 				E416361024ECD9D5009B624E /* KickMemberRow.swift */,
 				E416361224ECDC40009B624E /* LogoutRow.swift */,
+				E487922A24F34C380034C2CC /* SetAdminRow.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				E4B84AED24EA70A800D11BFD /* PNPromptView.swift in Sources */,
 				E404569B24EA127D00EC3356 /* RecordListView.swift in Sources */,
 				E4A75D3B24E7A053007095D7 /* LaffeyAPI.swift in Sources */,
+				E487922B24F34C380034C2CC /* SetAdminRow.swift in Sources */,
 				E43AC76824E6681C00F548F1 /* Laffey.xcdatamodeld in Sources */,
 				E404568924E9FCC300EC3356 /* RealmDatabase.swift in Sources */,
 				E4B84B0324EBAEE900D11BFD /* SettingsView.swift in Sources */,
@@ -684,7 +688,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24B47CDF70E07D68BCB0B6E8 /* Pods-Laffey.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LaffeyTemp;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 385;
@@ -719,7 +723,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D9B488BCCC77F99EE66EDBDB /* Pods-Laffey.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LaffeyTemp;
 				CODE_SIGN_ENTITLEMENTS = Laffey/Laffey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 385;

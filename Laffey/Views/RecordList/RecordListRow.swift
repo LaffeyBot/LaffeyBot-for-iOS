@@ -11,71 +11,94 @@ import RealmSwift
 
 struct RecordListRow: View {
     var record: PersonalRecord
+    let myself = Preferences().myself
     let userID = Preferences().userID
     @State var alert = Alert(title: Text(""))
     @State var doShowAlert = false
+    @State var isEditing = false
+    @State var recordForm: RecordForm = RecordForm()
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
+        VStack {
+            if isEditing {
+                AddRecordView(recordForm: RecordForm(record: record),
+                              isAddingRecord: $isEditing,
+                              currentRecord: RealmDatabase().getCurrentTeamRecord(current: TeamRecordNative()),
+                              isModifying: true)
+            } else {
                 HStack {
-                    Text(record.nickname)
-                    Text("对")
-                }
-                
-                HStack {
-                    Text(String(record.boss_gen))
-                    Text("周目")
-                    Text(String(record.boss_order))
-                    Text("王")
-                }
-                
-                HStack {
-                    Text("造成了")
-                    Text(String(record.damage))
-                        .foregroundColor(Color.salmon)
-                    Text("点伤害")
-                }
-            }
-            .frame(alignment: .leading)
-            .alert(isPresented: $doShowAlert, content: {
-                alert
-            })
-            
-            Spacer()
-            
-            if record.user_id == userID {
-                VStack(alignment: .trailing) {
-                    Button(action: {
-                        self.modifyRecord()
-                    }) {
-                        Text("修改")
-                            .frame(minWidth: 0, maxWidth: 60, minHeight: 30, maxHeight: 50)
-                    }
-                    .font(.headline)
-                    .background(Color.salmon)
-                    .foregroundColor(.white)
-                    .cornerRadius(40)
-                    .padding([[.vertical]], 5)
-                    
-                    Button(action: {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(record.nickname)
+                            Text("对")
+                        }
                         
-                    }) {
-                        Text("删除")
-                            .frame(minWidth: 0, maxWidth: 60, minHeight: 30, maxHeight: 50)
+                        HStack {
+                            Text(String(record.boss_gen))
+                            Text("周目")
+                            Text(String(record.boss_order))
+                            Text("王")
+                        }
+                        
+                        HStack {
+                            Text("造成了")
+                            Text(String(record.damage))
+                                .foregroundColor(Color.salmon)
+                            Text("点伤害")
+                        }
                     }
-                    .font(.headline)
-                    .background(Color.white)
-                    .foregroundColor(Color.red)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.red, lineWidth: 2)
-                    )
-                    .padding([[.vertical]], 0)
+                    .frame(alignment: .leading)
+                    .alert(isPresented: $doShowAlert, content: {
+                        alert
+                    })
+                    
+                    Spacer()
+                    
+                    if record.user_id == userID || myself.role > 0  {
+                        VStack(alignment: .trailing) {
+                            Button(action: {
+                                withAnimation {
+                                    self.isEditing.toggle()
+                                }
+                            }) {
+                                Text("修改")
+                                    .frame(minWidth: 0, maxWidth: 60, minHeight: 30, maxHeight: 50)
+                            }
+                            .font(.headline)
+                            .background(Color.salmon)
+                            .foregroundColor(.white)
+                            .cornerRadius(40)
+                            .padding([[.vertical]], 5)
+                            
+                            Button(action: {
+                                self.confirmDeletion()
+                            }) {
+                                Text("删除")
+                                    .frame(minWidth: 0, maxWidth: 60, minHeight: 30, maxHeight: 50)
+                            }
+                            .font(.headline)
+                            .background(Color.white)
+                            .foregroundColor(Color.red)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.red, lineWidth: 2)
+                            )
+                            .padding([[.vertical]], 0)
+                        }
+                    }
                 }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             }
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+    }
+    
+    func confirmDeletion() {
+        alert = Alert(title: Text("删除记录"),
+                      message: Text("你确定要删除这条记录吗？"),
+                      primaryButton: .destructive(Text("删除"), action: {
+                        self.deleteRecord()
+                      }), secondaryButton: .cancel())
+        self.doShowAlert.toggle()
     }
     
     func deleteRecord() {
@@ -86,12 +109,6 @@ struct RecordListRow: View {
             case let .success(response):
                 if response.statusCode == 200 {
                     self.showMessage(title: "成功", message: "已删除本记录")
-                    let realm = try! Realm()
-                    let self_record = realm.objects(PersonalRecord.self)
-                        .filter("id = \(String(record.id))}")
-                    try! realm.write {
-                        realm.delete(self_record)
-                    }
                 } else {
                     self.showMessage(title: "错误", message: "未知错误")
                 }
@@ -102,10 +119,6 @@ struct RecordListRow: View {
     func showMessage(title: String, message: String) {
         alert = Alert(title: Text(title), message: Text(message))
         self.doShowAlert = true
-    }
-    
-    func modifyRecord() {
-        
     }
 }
 

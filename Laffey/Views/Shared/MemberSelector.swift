@@ -17,23 +17,17 @@ struct MemberSelector: View {
             List {
                 ForEach(memberList, id: \.id) { member in
                     Button(action: {
-                        selectedMemeber = member
-                        doShowMemberSelector = false
+                        self.selectedMemeber = member
+                        self.doShowMemberSelector = false
                     }, label: {
-                        HStack {
-                            Text(member.nickname)
-                            Spacer()
-                            if member.role == 2 {
-                                Text("会长")
-                            } else if member.role == 1 {
-                                Text("管理员")
-                            }
-                        }
-                        
+                        self.labelFor(member: member)
                     })
                     .foregroundColor(.black)
                     
                 }
+            }
+            .onAppear() {
+                self.getData()
             }
             .navigationBarTitle(Text("选择成员"))
             .navigationBarItems(leading:
@@ -45,9 +39,17 @@ struct MemberSelector: View {
                 })
             )
         }
-        
-        .onAppear() {
-            getData()
+    }
+    
+    func labelFor(member: User) -> HStack<TupleView<(Text, Spacer, _ConditionalContent<Text, Text>?)>> {
+        HStack {
+            Text(member.nickname)
+            Spacer()
+            if member.role == 2 {
+                Text("会长")
+            } else if member.role == 1 {
+                Text("管理员")
+            }
         }
     }
     

@@ -14,7 +14,7 @@ struct SettingsView: View {
         NavigationView {
                 List {
                     Section(header: Text("关于我")) {
-                        AboutMeRow()
+                        AboutMeRow(key: "邮箱", value: "")
                         AboutMeRow()
                     }
                     

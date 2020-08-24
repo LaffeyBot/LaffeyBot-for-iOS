@@ -132,7 +132,7 @@ extension LaffeyAPI: TargetType {
     var headers: [String: String]? {
         var header = ["Content-type": "application/json"]
         switch self {
-        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken, .deleteRecord, .getCurrentBossStatus:
+        case .getRecords, .addRecord, .linkToken, .getMembers, .unlinkToken, .deleteRecord, .getCurrentBossStatus, .modifyRecord:
             header["auth"] = Preferences().authToken
         default:
             break

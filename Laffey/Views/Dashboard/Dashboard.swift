@@ -52,7 +52,7 @@ struct Dashboard: View {
                     .padding(30)
                     .animation(.none)
                     .sheet(isPresented: $doPresentPNPrompt, content: {
-                        PNPromptView(doPresentPNPrompt: $doPresentPNPrompt)
+                        PNPromptView(doPresentPNPrompt: self.$doPresentPNPrompt)
                     })
                     
                     if isAddingRecord {
@@ -100,6 +100,7 @@ struct Dashboard: View {
     }
     
     func fetchAllRecords() {
+        hasError = false
         self.isFetching = true
         FetchData().fetchCurrentBossStatus { (response) in
             switch response {
@@ -117,7 +118,7 @@ struct Dashboard: View {
     
     func refreshData() {
         let realm = try! Realm()
-        self.recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "detail_date", ascending: false)
+        self.recordList = realm.objects(TeamRecord.self).sorted(byKeyPath: "last_modified", ascending: false)
         if (self.recordList?.count ?? 0) > 0 {
             return currentRecord.update(teamRecord: recordList![0])
         }

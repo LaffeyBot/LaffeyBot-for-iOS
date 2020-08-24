@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct AboutMeRow: View {
+    @State var key: String = "Key"
+    @State var value: String = "Value"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(key + ": " + value)
     }
 }
 

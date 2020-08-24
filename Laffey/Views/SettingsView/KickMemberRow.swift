@@ -22,19 +22,19 @@ struct KickMemberRow: View {
         })
         .foregroundColor(.black)
         .sheet(isPresented: $doShowMemberSelector, onDismiss: {
-            if memberToBeKicked != Preferences().myself {
+            if self.memberToBeKicked != Preferences().myself {
                 self.alert = Alert(title: Text("踢出成员"),
                                    message:
-                                     Text("你确定要踢出" + memberToBeKicked.nickname + "吗？此操作不可逆。"),
+                    Text("你确定要踢出" + self.memberToBeKicked.nickname + "吗？此操作不可逆。"),
                                    primaryButton: .destructive(Text("确认踢出"), action: {
                                      self.kickMember()
                                    }), secondaryButton: .cancel({
-                                     memberToBeKicked = Preferences().myself
+                                    self.memberToBeKicked = Preferences().myself
                                    }))
                 self.doShowKickMemberAlert.toggle()
             }
         }, content: {
-            MemberSelector(selectedMemeber: $memberToBeKicked, doShowMemberSelector: $doShowMemberSelector)
+            MemberSelector(selectedMemeber: self.$memberToBeKicked, doShowMemberSelector: self.$doShowMemberSelector)
         })
         .alert(isPresented: $doShowKickMemberAlert, content: {
             self.alert
@@ -47,7 +47,7 @@ struct KickMemberRow: View {
             case let .success(response):
                 if response.statusCode == 200 {
                     self.alert = Alert(title: Text("踢出成功"),
-                                       message: Text("已踢出" + memberToBeKicked.nickname + "。"), dismissButton: nil)
+                                       message: Text("已踢出" + self.memberToBeKicked.nickname + "。"), dismissButton: nil)
                 } else if response.statusCode == 403 {
                     self.alert = Alert(title: Text("错误"),
                                        message: Text("不是会长，没有权限踢出成员。"), dismissButton: nil)
@@ -59,7 +59,7 @@ struct KickMemberRow: View {
                                    message: Text(error.localizedDescription), dismissButton: nil)
             }
             self.doShowKickMemberAlert.toggle()
-            memberToBeKicked = Preferences().myself
+            self.memberToBeKicked = Preferences().myself
         }
     }
 }
